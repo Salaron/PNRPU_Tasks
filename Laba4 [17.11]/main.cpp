@@ -1,6 +1,7 @@
 #include <iostream>
 #include <time.h>
 #include <string>
+#include <windows.h>
 
 using namespace std;
 
@@ -34,26 +35,21 @@ void printRight(int* arr, int N, int K) {
     }
 }
 
-void safeInputInt(string msg, int& dest) {
-    for (;;) {
-        cout << msg;
-        try {
-            cin >> dest;
-            break;
-        }
-        catch (std::ios_base::failure const& ex) {
-            cout << "Пожалуйста, введите число!" << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
+void safeInputInt(string msg, int& dest)
+{
+    cout << msg;
+    while (!(cin >> dest) || (cin.peek() != '\n'))
+    {
+        cin.clear();
+        while (cin.get() != '\n');
+        cout << "Пожалуйста, введите число!" << endl;
     }
 }
 
 int main()
 {
-    setlocale(LC_ALL, ""); // set Russian lang
+    SetConsoleOutputCP(CP_UTF8);
     srand(time(0)); // set seed
-    cin.exceptions(istream::failbit); // enable cin exceptions to turn on safe input
 
     int N;
     for (;;) {

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include <time.h>
+#include <windows.h>
 
 using namespace std;
 
@@ -77,7 +78,7 @@ void safeInputInt(string msg, int& dest) {
 
 int main() {
 	srand(time(0));
-	setlocale(LC_ALL, "");
+	SetConsoleOutputCP(CP_UTF8);
 	cin.exceptions(istream::failbit);
 
 	int N;

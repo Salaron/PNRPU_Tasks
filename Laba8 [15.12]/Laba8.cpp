@@ -1,6 +1,7 @@
 #include <iostream>
 #include <time.h>
 #include <algorithm>
+#include <windows.h>
 
 using namespace std;
 
@@ -25,8 +26,7 @@ int GetInt(bool sign)
 int main()
 {
 	srand(time(0));
-	setlocale(LC_ALL, "");
-
+	SetConsoleOutputCP(CP_UTF8);
 	cout << "Введите количество чисел в списке: ";
 	int n = GetInt(false);
 	int* list = new int[n];

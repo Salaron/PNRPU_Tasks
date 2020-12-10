@@ -1,10 +1,11 @@
 #include <iostream>
+#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-	setlocale(NULL, "Russian");
+	SetConsoleOutputCP(CP_UTF8);
 	double b;
 	cout << "Введите параметр b: ";
 	cin >> b;

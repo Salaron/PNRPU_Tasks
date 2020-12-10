@@ -1,12 +1,13 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
 #include <cpr/cpr.h>
+#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-	setlocale(NULL, "RU");
+	SetConsoleOutputCP(CP_UTF8);
 	int z, s;
 	cout << "Зарплата в рублях: ";
 	cin >> z;

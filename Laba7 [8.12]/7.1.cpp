@@ -1,6 +1,6 @@
 #include <iostream>
 #include <time.h>
-
+#include <windows.h>
 using namespace std;
 
 void move(int* arr, int size) {
@@ -50,7 +50,7 @@ void PrintArray(int* arr, int n) {
 
 int main()
 {
-	setlocale(LC_ALL, "");
+	SetConsoleOutputCP(CP_UTF8);
 	srand(time(0));
 
 	int n;

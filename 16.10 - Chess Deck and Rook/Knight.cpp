@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <windows.h>
 
 using namespace std;
 
@@ -107,7 +108,7 @@ void solve()
 
 int main()
 {
-	setlocale(NULL, "RU");
+	SetConsoleOutputCP(CP_UTF8);
 	int t;
 	cout << "Количество тестов: ";
 	cin >> t;

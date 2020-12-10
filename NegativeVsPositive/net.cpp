@@ -1,10 +1,11 @@
 #include <iostream>
+#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "");
+	SetConsoleOutputCP(CP_UTF8);
 
 	int founded = false;
 	int flag = 0;

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <windows.h>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ enum MONTHS {
 
 int main()
 {
-	setlocale(LC_ALL, "");
+	SetConsoleOutputCP(CP_UTF8);
 	int num = 0;
 	while (num <= 0 || num >= 13) {
 		cout << "Введите номер месяца: ";

@@ -1,10 +1,11 @@
 #include <iostream>
+#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "");
+	SetConsoleOutputCP(CP_UTF8);
 	int n = 0;
 	for (;;) {
 		cout << "Введите длину катетов треугольника: ";

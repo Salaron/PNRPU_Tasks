@@ -1,10 +1,11 @@
 #include <iostream>
+#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "");
+	SetConsoleOutputCP(CP_UTF8);
 	int N = 0;
 	while (N <= 0) {
 		cout << "Введите количество чисел в последовательности: ";

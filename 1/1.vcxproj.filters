@@ -20,6 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Условие.txt" />
+    <None Include="readme.md" />
   </ItemGroup>
 </Project>

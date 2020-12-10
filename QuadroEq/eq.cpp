@@ -1,13 +1,14 @@
 #include <iostream>
 #include <iomanip>
 #include <math.h>
+#include <windows.h>
 
 using namespace std;
 
 
 int main()
 {
-    setlocale(LC_ALL, "");
+    SetConsoleOutputCP(CP_UTF8);
     cout << "Решение квадратных уравнений вида a * x^2 + b * x + c = 0" << endl;
     double a, b, c;
     cout << "Введите a: ";

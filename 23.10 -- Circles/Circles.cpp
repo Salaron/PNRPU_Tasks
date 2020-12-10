@@ -1,12 +1,13 @@
 #include <iostream>
 #include <math.h>
 #include <iomanip>
+#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-	setlocale(NULL, "RU");
+	SetConsoleOutputCP(CP_UTF8);
 	int x1, y1, r1, x2, y2, r2;
 	cin >> x1 >> y1 >> r1 >> x2 >> y2 >> r2;
 

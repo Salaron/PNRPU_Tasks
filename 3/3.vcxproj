@@ -142,7 +142,7 @@
     <ClCompile Include="3.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Условие.txt" />
+    <Text Include="readme.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

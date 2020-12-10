@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="rec.cpp">
+    <Text Include="Условие.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Laba8.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

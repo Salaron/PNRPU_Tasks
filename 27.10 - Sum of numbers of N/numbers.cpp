@@ -1,10 +1,11 @@
 #include <iostream>
+#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-	setlocale(NULL, "RU");
+	SetConsoleOutputCP(CP_UTF8);
 	int N = 0;
 	cout << "Введите натуральное число: ";
 	cin >> N;

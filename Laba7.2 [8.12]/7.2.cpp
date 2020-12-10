@@ -1,6 +1,7 @@
 #include <iostream>
 #include <time.h>
 #include <cstdarg>
+#include <windows.h>
 
 using namespace std;
 
@@ -67,7 +68,7 @@ int GetInt()
 
 int main()
 {
-	setlocale(LC_ALL, "");
+	SetConsoleOutputCP(CP_UTF8);
 /*	DOT a, b;
 	cout << "Введите начальную координату X стороны: ";
 	a.x = GetInt();
