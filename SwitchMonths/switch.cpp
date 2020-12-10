@@ -23,23 +23,23 @@ int main()
 	setlocale(LC_ALL, "");
 	int num = 0;
 	while (num <= 0 || num >= 13) {
-		cout << "Ââåäèòå íîìåð ìåñÿöà: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð¼ÐµÑÑÑ†Ð°: ";
 		cin >> num;
 	}
 
 	switch (num) {
-	case MONTH_JANUARY:		cout << "ßíâàðü" << endl;
-	case MONTH_FEBRUARY:	cout << "Ôåâðàëü" << endl;
-	case MONTH_MARCH:		cout << "Ìàðò" << endl;
-	case MONTH_APRIL:		cout << "Àïðåëü" << endl;
-	case MONTH_MAY:			cout << "Ìàé" << endl;
-	case MONTH_JUNE:		cout << "Èþíü" << endl;
-	case MONTH_JULY:		cout << "Èþëü" << endl;
-	case MONTH_AUGUST:		cout << "Àâãóñò" << endl;
-	case MONTH_SEPTEMBER:	cout << "Ñåíòÿáðü (ãîðèò)" << endl;
-	case MONTH_OCTOBER:		cout << "Îêòÿáðü" << endl;
-	case MONTH_NOVEMBER:	cout << "Íîÿáðü" << endl;
-	case MONTH_DECEMBER:	cout << "Äåêàáðü" << endl;
+	case MONTH_JANUARY:		cout << "Ð¯Ð½Ð²Ð°Ñ€ÑŒ" << endl;
+	case MONTH_FEBRUARY:	cout << "Ð¤ÐµÐ²Ñ€Ð°Ð»ÑŒ" << endl;
+	case MONTH_MARCH:		cout << "ÐœÐ°Ñ€Ñ‚" << endl;
+	case MONTH_APRIL:		cout << "ÐÐ¿Ñ€ÐµÐ»ÑŒ" << endl;
+	case MONTH_MAY:			cout << "ÐœÐ°Ð¹" << endl;
+	case MONTH_JUNE:		cout << "Ð˜ÑŽÐ½ÑŒ" << endl;
+	case MONTH_JULY:		cout << "Ð˜ÑŽÐ»ÑŒ" << endl;
+	case MONTH_AUGUST:		cout << "ÐÐ²Ð³ÑƒÑÑ‚" << endl;
+	case MONTH_SEPTEMBER:	cout << "Ð¡ÐµÐ½Ñ‚ÑÐ±Ñ€ÑŒ (Ð³Ð¾Ñ€Ð¸Ñ‚)" << endl;
+	case MONTH_OCTOBER:		cout << "ÐžÐºÑ‚ÑÐ±Ñ€ÑŒ" << endl;
+	case MONTH_NOVEMBER:	cout << "ÐÐ¾ÑÐ±Ñ€ÑŒ" << endl;
+	case MONTH_DECEMBER:	cout << "Ð”ÐµÐºÐ°Ð±Ñ€ÑŒ" << endl;
 	}
 	
 

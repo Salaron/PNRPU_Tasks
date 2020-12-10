@@ -1,2 +1,2 @@
-## Условие
+## РЈСЃР»РѕРІРёРµ
 https://codeforces.com/problemset/problem/4/A

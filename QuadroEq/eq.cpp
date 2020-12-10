@@ -8,29 +8,29 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "");
-    cout << "Ðåøåíèå êâàäðàòíûõ óðàâíåíèé âèäà a * x^2 + b * x + c = 0" << endl;
+    cout << "Ð ÐµÑˆÐµÐ½Ð¸Ðµ ÐºÐ²Ð°Ð´Ñ€Ð°Ñ‚Ð½Ñ‹Ñ… ÑƒÑ€Ð°Ð²Ð½ÐµÐ½Ð¸Ð¹ Ð²Ð¸Ð´Ð° a * x^2 + b * x + c = 0" << endl;
     double a, b, c;
-    cout << "Ââåäèòå a: ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ a: ";
     cin >> a;
-    cout << "Ââåäèòå b: ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ b: ";
     cin >> b;
-    cout << "Ââåäèòå c: ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ c: ";
     cin >> c;
     double D = b * b - 4 * a * c;
     if (D > 0) {
         double x1 = (-1 * b - sqrt(D)) / (2 * a);
         double x2 = (-1 * b + sqrt(D)) / (2 * a);
-        cout << "Óðàâíåíèå èìååò äâà êîðíÿ: " << endl;
+        cout << "Ð£Ñ€Ð°Ð²Ð½ÐµÐ½Ð¸Ðµ Ð¸Ð¼ÐµÐµÑ‚ Ð´Ð²Ð° ÐºÐ¾Ñ€Ð½Ñ: " << endl;
         cout << "x1 = " << x1 << endl;
         cout << "x2 = " << x2 << endl;
     }
     else if (D == 0) {
         double x = (-1 * b) / (2 * a);
-        cout << "Óðàâíåíèå èìååò îäèí êîðåíü: " << endl;
+        cout << "Ð£Ñ€Ð°Ð²Ð½ÐµÐ½Ð¸Ðµ Ð¸Ð¼ÐµÐµÑ‚ Ð¾Ð´Ð¸Ð½ ÐºÐ¾Ñ€ÐµÐ½ÑŒ: " << endl;
         cout << "x = " << x;
     }
     else if (D < 0) {
-        cout << "Ðåøåíèé íåò" << endl;
+        cout << "Ð ÐµÑˆÐµÐ½Ð¸Ð¹ Ð½ÐµÑ‚" << endl;
     }
     return 0;
 }

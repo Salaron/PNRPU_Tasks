@@ -4,22 +4,22 @@
 using namespace std;
 
 enum LETTERS {
-	LETTER_A = -32, // à
-	LETTER_I = -24, // è
-	LETTER_K = -22, // ê
-	LETTER_M = -20, // ì
-	LETTER_N,		// í
-	LETTER_O,		// î
-	LETTER_P = -16, // ð
-	LETTER_T = -14, // ò
-	LETTER_F = -12	// ô
+	LETTER_A = -32, // Ð°
+	LETTER_I = -24, // Ð¸
+	LETTER_K = -22, // Ðº
+	LETTER_M = -20, // Ð¼
+	LETTER_N,		// Ð½
+	LETTER_O,		// Ð¾
+	LETTER_P = -16, // Ñ€
+	LETTER_T = -14, // Ñ‚
+	LETTER_F = -12	// Ñ„
 };
 
 int main()
 {
 	setlocale(LC_ALL, "");
 	char letter;
-	cout << "Ââåäèòå áóêâó: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð±ÑƒÐºÐ²Ñƒ: ";
 	cin >> letter;
 
 	if (letter >= -64 && letter < -32) letter += 32;
@@ -35,11 +35,11 @@ int main()
 	case LETTER_P:
 	case LETTER_T:
 	case LETTER_F: {
-		cout << "Â ñëîâå \"Èíôîðìàòèêà\" åñòü áóêâà \"" << letter << "\"!" << endl;
+		cout << "Ð’ ÑÐ»Ð¾Ð²Ðµ \"Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ð¸ÐºÐ°\" ÐµÑÑ‚ÑŒ Ð±ÑƒÐºÐ²Ð° \"" << letter << "\"!" << endl;
 		break;
 	}
 	default: {
-		cout << "Â ñëîâå \"Èíôîðìàòèêà\" íåò áóêâû " << letter << endl;
+		cout << "Ð’ ÑÐ»Ð¾Ð²Ðµ \"Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ð¸ÐºÐ°\" Ð½ÐµÑ‚ Ð±ÑƒÐºÐ²Ñ‹ " << letter << endl;
 	}
 	}
 

@@ -7,12 +7,12 @@ int main()
 	setlocale(LC_ALL, "");
 	int n;
 	for (;;) {
-		cout << "Ââåäèòå öèôðó: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†Ð¸Ñ„Ñ€Ñƒ: ";
 		cin >> n;
 		if (n >= 0 && n <= 9)
 			break;
 		else
-			cout << "Ââåäåíà íå öèôðà!" << endl;
+			cout << "Ð’Ð²ÐµÐ´ÐµÐ½Ð° Ð½Ðµ Ñ†Ð¸Ñ„Ñ€Ð°!" << endl;
 	}
 
 	switch (n) {

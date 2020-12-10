@@ -17,7 +17,7 @@ int GetInt(bool sign)
 	{
 		cin.clear();
 		while (cin.get() != '\n');
-		cout << "Ââåäèòå öåëîå ÷èñëî, êîòîðîå áîëüøå íóëÿ!" << endl;
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†ÐµÐ»Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ðµ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð½ÑƒÐ»Ñ!" << endl;
 	}
 	return res;
 }
@@ -27,7 +27,7 @@ int main()
 	srand(time(0));
 	setlocale(LC_ALL, "");
 
-	cout << "Ââåäèòå êîëè÷åñòâî ÷èñåë â ñïèñêå: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ‡Ð¸ÑÐµÐ» Ð² ÑÐ¿Ð¸ÑÐºÐµ: ";
 	int n = GetInt(false);
 	int* list = new int[n];
 	for (int i = 0; i < n; i++) {
@@ -35,7 +35,7 @@ int main()
 	}
 	sort(list, list + n);
 
-	cout << "Íàø óïîðÿäî÷åííûé ñïèñîê ÷èñåë: " << endl;
+	cout << "ÐÐ°Ñˆ ÑƒÐ¿Ð¾Ñ€ÑÐ´Ð¾Ñ‡ÐµÐ½Ð½Ñ‹Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº Ñ‡Ð¸ÑÐµÐ»: " << endl;
 	for (int i = 0; i < n; i++) {
 		cout << list[i] << "\t";
 	}
@@ -43,14 +43,14 @@ int main()
 	
 	int idx = -1;
 	while (idx == -1) {
-		cout << "Ââåäèòå çíà÷åíèå ýëåìåíòà, ïîçèöèþ êîòîðîãî íóæíî íàéòè: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°, Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð³Ð¾ Ð½ÑƒÐ¶Ð½Ð¾ Ð½Ð°Ð¹Ñ‚Ð¸: ";
 		int neededElement = GetInt(true);
 		idx = findPos(list, n, neededElement, 0);
 		if (idx == -1) {
-			cout << "Ýëåìåíò " << neededElement << " îòñóòñâóåò â äàííîì ñïèñêå" << endl;
+			cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚ " << neededElement << " Ð¾Ñ‚ÑÑƒÑ‚ÑÐ²ÑƒÐµÑ‚ Ð² Ð´Ð°Ð½Ð½Ð¾Ð¼ ÑÐ¿Ð¸ÑÐºÐµ" << endl;
 		}
 		else {
-			cout << "Ýëåìåíò " << neededElement << " èìååò ïîçèöèþ " << idx + 1 << endl;
+			cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚ " << neededElement << " Ð¸Ð¼ÐµÐµÑ‚ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ " << idx + 1 << endl;
 		}
 	}
 

@@ -13,11 +13,11 @@ struct Coordinate {
 void solve()
 {
 	int m, n, x, y;
-	cout << "Êîëè÷åñòâî ñòðîê: ";
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÑ‚Ñ€Ð¾Ðº: ";
 	cin >> m;
-	cout << "Êîëè÷åñòâî ñòîëáöîâ: ";
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð¾Ð²: ";
 	cin >> n;
-	cout << "Êîîðäèíàòû êîíÿ: ";
+	cout << "ÐšÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñ‹ ÐºÐ¾Ð½Ñ: ";
 	cin >> x >> y;
 	
 	vector<Coordinate> Coordinates;
@@ -98,7 +98,7 @@ void solve()
 	if (m > 100 || n > 100)
 		cout.clear();
 
-	cout << "Êîëè÷åñòâî òî÷åê: " << Coordinates.size() << " ";
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ‚Ð¾Ñ‡ÐµÐº: " << Coordinates.size() << " ";
 	for (int i = 0; i < Coordinates.size(); i++) {
 		cout << "(" << Coordinates[i].x << "; " << Coordinates[i].y << ") ";
 	}
@@ -109,7 +109,7 @@ int main()
 {
 	setlocale(NULL, "RU");
 	int t;
-	cout << "Êîëè÷åñòâî òåñòîâ: ";
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ‚ÐµÑÑ‚Ð¾Ð²: ";
 	cin >> t;
 	while (t--) {
 		solve();

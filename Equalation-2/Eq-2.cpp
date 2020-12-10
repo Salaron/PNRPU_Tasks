@@ -5,21 +5,21 @@
 using namespace std;
 
 inline double F(double x) { return exp(x) - exp(-1 * x) - 2; }
-inline double FF(double x) { return exp(x) - exp(-1 * x); } // производная
+inline double FF(double x) { return exp(x) - exp(-1 * x); } // РїСЂРѕРёР·РІРѕРґРЅР°СЏ
 
 int main()
 {
     setlocale(LC_ALL, "");
-    cout << "Решение нелинейного уравнения e^x - e^-x - 2 = 0 методом Ньютона" << endl;
+    cout << "Р РµС€РµРЅРёРµ РЅРµР»РёРЅРµР№РЅРѕРіРѕ СѓСЂР°РІРЅРµРЅРёСЏ e^x - e^-x - 2 = 0 РјРµС‚РѕРґРѕРј РќСЊСЋС‚РѕРЅР°" << endl;
     double left, right;
-    cout << "Введите левую границу отрезка: ";
+    cout << "Р’РІРµРґРёС‚Рµ Р»РµРІСѓСЋ РіСЂР°РЅРёС†Сѓ РѕС‚СЂРµР·РєР°: ";
     cin >> left;
-    cout << "Введите правую границу отрезка: ";
+    cout << "Р’РІРµРґРёС‚Рµ РїСЂР°РІСѓСЋ РіСЂР°РЅРёС†Сѓ РѕС‚СЂРµР·РєР°: ";
     cin >> right;
     double eps = 0.000001; // 10 ^ -6
 
     if (F(left) * F(right) > 0) {
-        cout << "На указанном отрезке нет корня!" << endl;
+        cout << "РќР° СѓРєР°Р·Р°РЅРЅРѕРј РѕС‚СЂРµР·РєРµ РЅРµС‚ РєРѕСЂРЅСЏ!" << endl;
         return 0;
     }
 
@@ -29,5 +29,5 @@ int main()
     }
 
     cout << fixed << setprecision(4);
-    cout << "Ответ: " << x << endl;
+    cout << "РћС‚РІРµС‚: " << x << endl;
 }

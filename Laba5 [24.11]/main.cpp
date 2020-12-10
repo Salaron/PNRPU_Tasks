@@ -68,7 +68,7 @@ void safeInputInt(string msg, int& dest) {
 			break;
 		}
 		catch (std::ios_base::failure const& ex) {
-			cout << "Ïîæàëóéñòà, ââåäèòå ÷èñëî!" << endl;
+			cout << "ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾!" << endl;
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		}	
@@ -82,18 +82,18 @@ int main() {
 
 	int N;
 	for (;;) {
-		safeInputInt("Ââåäèòå ðàçìåð ìàññèâà: ", N);
+		safeInputInt("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°: ", N);
 		if (N >= 1) break;
-		cout << "Ðàçìåð ìàññèâà äîëæåí áûòü áîëüøå 0!" << endl;
+		cout << "Ð Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð° Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð±Ð¾Ð»ÑŒÑˆÐµ 0!" << endl;
 	}
 
 	int* arr = InitArray(N);
 	int** matrix = InitMatrix(N, N); // matrix NxN -- square matrix
 	FillMatrix(arr, matrix, N);
 
-	cout << "Îäíîìåðíûé ìàññèâ: " << endl;
+	cout << "ÐžÐ´Ð½Ð¾Ð¼ÐµÑ€Ð½Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð²: " << endl;
 	PrintArray(arr, N);
-	cout << endl << "Ñãåíåðèðîâàííûé äâóìåðíûé ìàññèâ: " << endl;
+	cout << endl << "Ð¡Ð³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð´Ð²ÑƒÐ¼ÐµÑ€Ð½Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð²: " << endl;
 	PrintMatrix(matrix, N);
 
 	delete[] arr;
