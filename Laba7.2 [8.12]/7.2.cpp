@@ -7,7 +7,7 @@ using namespace std;
 
 double len(POINT a, POINT b)
 {
-	return sqrt(pow(b.x - a.x, 2) - pow(b.y - a.y, 2));
+	return sqrt(abs(pow(b.x - a.x, 2) - pow(b.y - a.y, 2)));
 }
 
 // (7; 7) (11; 1) (2; 2) (7;3)
@@ -28,18 +28,18 @@ bool belong(POINT m, int argc, ...)
 
 	va_start(ap, argc);
 	for (int i = 0; i < argc; i++) {
-		if (i + 2 == argc) {
-			last.x = va_arg(ap, int);
-			last.y = va_arg(ap, int);
+		if (i + 1 == argc) {
+			last = va_arg(ap, POINT);
+		}
+		else {
+			POINT l = va_arg(ap, POINT);
 		}
 	}
 	va_end(ap);
 
 	va_start(ap, argc);
-	for (int i = 0; i < argc; i += 2) {
-		POINT p;
-		p.x = va_arg(ap, int);
-		p.y = va_arg(ap, int);
+	for (int i = 0; i < argc; i++) {
+		POINT p = va_arg(ap, POINT);
 		if ((((p.y <= m.y) && (m.y < last.y)) || ((last.y <= m.y) && (m.y < p.y))) &&
 			(((last.y - p.y) != 0) && (m.x > ((last.x - p.x) * (m.y - p.y) / (last.y - p.y) + p.x))))
 			res = !res;
@@ -108,21 +108,36 @@ int main()
 	PrintCoord(t2);
 	cout << "C";
 	PrintCoord(t3);
-	cout << endl;
+	cout << endl << endl;
 
-	cout << "Принадлежит ли точка М выпоклому пятиугольнику" << endl;
-	POINT test[5];
-	for (int i = 1; i <= count; i++) {
-		cout << "Введите координаты X " << i << " точки пятиугольника: ";
-		test[i].x = GetInt();
-		cout << "Введите координаты Y " << i << " точки пятиугольника: ";
-		test[i].y = GetInt();
+	cout << "Принадлежит ли точка М (5; 3) выпуклому многоугольнику с координатами: " << endl;
+
+	POINT points[5];
+	points[0].x = 2;
+	points[0].y = 1;
+	points[1].x = 4;
+	points[1].y = 6;
+	points[2].x = 7;
+	points[2].y = 7;
+	points[3].x = 6;
+	points[3].y = 4;
+	points[4].x = 4;
+	points[4].y = 1;
+
+	for (int i = 0; i < 5; i++) {
+		switch (i) {
+		case 0: cout << "A"; break;
+		case 1: cout << "B"; break;
+		case 2: cout << "C"; break;
+		case 3: cout << "D"; break;
+		case 4: cout << "E"; break;
+		}
+		PrintCoord(points[i]);
 	}
-	POINT p;
-	cin >> p.x;
-	cin >> p.y;
-
-
-
+	
+	m.x = 5;
+	m.y = 3;
+	bool res = belong(m, 5, points[0], points[1], points[2], points[3], points[4]);
+	cout << endl << "Точка " << (belong(m, 5, points[0], points[1], points[2], points[3], points[4]) == true ? "принадлежит " : "не принадлежит ");
 	return 0;
 }
