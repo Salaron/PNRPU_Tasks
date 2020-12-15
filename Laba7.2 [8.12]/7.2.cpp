@@ -5,18 +5,13 @@
 
 using namespace std;
 
-struct POINT {
-	int x;
-	int y;
-};
-
-double len(struct POINT a, struct POINT b)
+double len(POINT a, POINT b)
 {
 	return sqrt(pow(b.x - a.x, 2) - pow(b.y - a.y, 2));
 }
 
 // (7; 7) (11; 1) (2; 2) (7;3)
-bool belong(struct POINT a, struct POINT b, struct POINT c, struct POINT m)
+bool belong(POINT a, POINT b, POINT c, POINT m)
 {
 	bool f1 = signbit((double)(a.x - m.x) * (b.y - a.y) - (b.x - a.x) * (a.y - m.y));
 	bool f2 = signbit((double)(b.x - m.x) * (c.y - b.y) - (c.x - b.x) * (b.y - m.y));
@@ -24,7 +19,7 @@ bool belong(struct POINT a, struct POINT b, struct POINT c, struct POINT m)
 	return f1 == f2 && f2 == f3;
 }
 
-bool belong(struct POINT m, int argc, ...)
+bool belong(POINT m, int argc, ...)
 {
 	va_list ap;
 
@@ -66,42 +61,66 @@ int GetInt()
 	return res;
 }
 
+void PrintCoord(POINT p) {
+	cout << "(" << p.x << "; " << p.y << ") ";
+}
+
 int main()
 {
 	SetConsoleOutputCP(CP_UTF8);
-/*	DOT a, b;
-	cout << "Введите начальную координату X стороны: ";
+	cout << "Вычисление длины стороны по координатам её точек" << endl;
+	POINT a, b;
+	cout << "Введите координату X первой точки: ";
 	a.x = GetInt();
-	cout << "Введите начальную координату Y стороны: ";
+	cout << "Введите координату Y первой точки: ";
 	a.y = GetInt();
+	cout << "Введите координату X второй точки: ";
 	b.x = GetInt();
+	cout << "Введите координату Y второй точки: ";
 	b.y = GetInt();
 
-	cout << len(a, b) << endl;
+	cout << "Длина стороны = " << len(a, b) << endl << endl;
 
-	DOT t1, t2, t3, m;
+	cout << "Проверка принадлежности точки М треугольнику" << endl;
+	POINT t1, t2, t3, m;
+	cout << "Введите координату X первой точки треугольника: ";
 	t1.x = GetInt();
+	cout << "Введите координату Y первой точки треугольника: ";
 	t1.y = GetInt();
+	cout << "Введите координату X второй точки треугольника: ";
 	t2.x = GetInt();
+	cout << "Введите координату Y второй точки треугольника: ";
 	t2.y = GetInt();
+	cout << "Введите координату X третьей точки треугольника: ";
 	t3.x = GetInt();
+	cout << "Введите координату Y третьей точки треугольника: ";
 	t3.y = GetInt();
+	cout << "Введите координату X точки М: ";
 	m.x  = GetInt();
+	cout << "Введите координату Y точки М: ";
 	m.y  = GetInt();
-	cout << (belong(t1, t2, t3, m) == true ? "Принадлежит" : "Не принадлежит"); */
+	cout << "Точка М";
+	PrintCoord(m);
+	cout << (belong(t1, t2, t3, m) == true ? "принадлежит " : "не принадлежит ")
+		 << "треугольнику с координатами A";
+	PrintCoord(t1);
+	cout << "B";
+	PrintCoord(t2);
+	cout << "C";
+	PrintCoord(t3);
+	cout << endl;
 
-	cout << "Введите количество точек в многоугольнике: ";
-	int count = GetInt();
-	tuple<int, int> test;
-	for (int i = 0; i < count; i++) {
-		POINT p;
-		p.x = 1;
-		p.y = 2;
-		test = std::tuple_cat(test, std::make_tuple('a'));
-
-
-		belong(p, count);
+	cout << "Принадлежит ли точка М выпоклому пятиугольнику" << endl;
+	POINT test[5];
+	for (int i = 1; i <= count; i++) {
+		cout << "Введите координаты X " << i << " точки пятиугольника: ";
+		test[i].x = GetInt();
+		cout << "Введите координаты Y " << i << " точки пятиугольника: ";
+		test[i].y = GetInt();
 	}
+	POINT p;
+	cin >> p.x;
+	cin >> p.y;
 
 
 

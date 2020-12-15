@@ -5,7 +5,7 @@
 
 using namespace std;
 
-inline double F(double x) { return 3 * x - 4 * log(x) - 5; }
+inline double F(double x) { return exp(x) - exp(-1 * x) - 2; }
 
 int main()
 {

@@ -26,7 +26,7 @@ int main()
 
     double x = (left + right) / 2;
     while (abs(F(x)) > eps) {
-        x -= F(x) / (FF(x) || 1);
+        x -= F(x) / FF(x);
     }
 
     cout << fixed << setprecision(4);
