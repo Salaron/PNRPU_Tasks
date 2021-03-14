@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+	system("chcp 1251>nul");
 	int res = 0;
 	string str;
 	cin >> str;

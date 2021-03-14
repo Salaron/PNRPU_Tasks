@@ -1,9 +1,15 @@
 #include <iostream>
 #include <time.h>
 #include <cstdarg>
-#include <windows.h>
+
+#pragma warning (disable:26451)
 
 using namespace std;
+
+struct POINT {
+	int x;
+	int y;
+};
 
 double len(POINT a, POINT b)
 {
@@ -67,7 +73,7 @@ void PrintCoord(POINT p) {
 
 int main()
 {
-	SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
 	cout << "Вычисление длины стороны по координатам её точек" << endl;
 	POINT a, b;
 	cout << "Введите координату X первой точки: ";

@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iomanip>
 #include <math.h>
-#include <windows.h>
 
 using namespace std;
 
@@ -10,7 +9,7 @@ inline double FF(double x) { return exp(x) - exp(-1 * x); } // производ�
 
 int main()
 {
-    SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
     cout << "Решение нелинейного уравнения e^x - e^-x - 2 = 0 методом Ньютона" << endl;
     double left, right;
     cout << "Введите левую границу отрезка: ";

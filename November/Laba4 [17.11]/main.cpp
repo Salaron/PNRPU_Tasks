@@ -1,7 +1,6 @@
 #include <iostream>
 #include <time.h>
 #include <string>
-#include <windows.h>
 
 using namespace std;
 
@@ -48,7 +47,7 @@ void safeInputInt(string msg, int& dest)
 
 int main()
 {
-    SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
     srand(time(0)); // set seed
 
     int N;

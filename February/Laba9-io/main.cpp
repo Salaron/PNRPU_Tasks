@@ -1,5 +1,4 @@
 #include <iostream>
-#include <windows.h>
 #include <fstream>
 #include <string>
 
@@ -102,7 +101,7 @@ void solve(const char* fileName)
 
 int main()
 {
-	SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
 	remove("F1");
 	remove("F2");
 	generateFile("F1");

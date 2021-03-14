@@ -22,12 +22,13 @@ Number::Number(const Number& n) {
 }
 
 void Number::Show() {
-	cout << "Ìàíòèññà: " << m_mantissa << endl;
-	cout << "Ïîğÿäîê: " << m_poryadok << endl;
+	cout << "ĞœĞ°Ğ½Ñ‚Ğ¸ÑÑĞ°: " << m_mantissa << endl;
+	cout << "ĞŸĞ¾Ñ€ÑĞ´Ğ¾Ğº: " << m_poryadok << endl;
 
 }
 
 int main() {
+	system("chcp 1251>nul");
 	Number test1;
 	test1.Show();
 }

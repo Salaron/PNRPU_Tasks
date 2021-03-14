@@ -11,8 +11,8 @@ public:
 		m_right = right;
 	}
 	void Read() {
-		cout << "Ââåäèòå ëåâóþ ãðàíèöó: "; cin >> m_left;
-		cout << "Ââåäèòå ïðàâóþ ãðàíèöó: "; cin >> m_right;
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð»ÐµÐ²ÑƒÑŽ Ð³Ñ€Ð°Ð½Ð¸Ñ†Ñƒ: "; cin >> m_left;
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ñ€Ð°Ð²ÑƒÑŽ Ð³Ñ€Ð°Ð½Ð¸Ñ†Ñƒ: "; cin >> m_right;
 	}
 	void Show() {
 
@@ -29,7 +29,7 @@ Range make_Range(double left, double right) {
 }
 
 int main() {
-	setlocale(LC_ALL, "");
+	system("chcp 1251>nul");
 	Range A;
 	A.Init(-123.4, 256.6);
 	cout << 
@@ -50,8 +50,8 @@ int main() {
 	delete[] D;
 
 	double left, right;
-	cout << "Ââåäèòå ëåâóþ ãðàíèöó: "; cin >> left;
-	cout << "Ââåäèòå ïðàâóþ ãðàíèöó: "; cin >> right;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð»ÐµÐ²ÑƒÑŽ Ð³Ñ€Ð°Ð½Ð¸Ñ†Ñƒ: "; cin >> left;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ñ€Ð°Ð²ÑƒÑŽ Ð³Ñ€Ð°Ð½Ð¸Ñ†Ñƒ: "; cin >> right;
 	Range F = make_Range(left, right);
 	F.rangecheck(123);
 	return 0;

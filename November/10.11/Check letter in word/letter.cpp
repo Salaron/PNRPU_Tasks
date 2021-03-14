@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <windows.h>
 
 using namespace std;
 
@@ -18,7 +17,7 @@ enum LETTERS {
 
 int main()
 {
-	SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
 	char letter;
 	cout << "Введите букву: ";
 	cin >> letter;

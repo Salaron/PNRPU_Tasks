@@ -1,6 +1,5 @@
 #include <iostream>
 #include <time.h>
-#include <windows.h>
 
 using namespace std;
 
@@ -69,7 +68,7 @@ void Print(int* arr, int size)
 
 int main()
 {
-	SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
 	srand(time(0));
 	int n = 5 + rand() % 15 + 1;
 	cout << "Количество элементов в массиве: " << n << endl;

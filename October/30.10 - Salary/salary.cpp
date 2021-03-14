@@ -1,13 +1,12 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
 #include <cpr/cpr.h>
-#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-	SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
 	int z, s;
 	cout << "Зарплата в рублях: ";
 	cin >> z;

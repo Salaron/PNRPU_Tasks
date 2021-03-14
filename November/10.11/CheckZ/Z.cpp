@@ -1,11 +1,10 @@
 #include <iostream>
-#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-	SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
 	int n = 0;
 	for (;;) {
 		cout << "Введите количество чисел в последовательности: ";

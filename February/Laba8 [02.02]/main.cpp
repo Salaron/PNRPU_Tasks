@@ -73,8 +73,7 @@ void Insert(Stadium*& arr, int* count, int pos) {
 
 int main()
 {
-	SetConsoleCP(CP_UTF8);
-	SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
 	cout << "Введите количество элементов: ";
 	int elementsCnt = getIntSafe();
 

@@ -4,6 +4,7 @@
 using namespace std;
 
 int main() {
+	system("chcp 1251>nul");
 	int n1, n2, k, m;
 	cin >> n1 >> n2 >> k >> m;
 

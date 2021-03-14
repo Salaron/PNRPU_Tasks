@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <time.h>
-#include <windows.h>
 #include "utils.h"
 #include <vector>
 
@@ -134,8 +133,8 @@ void BM(DATA* arr, int size, string value) {
 
 int main()
 {
+	system("chcp 1251>nul");
 	srand(time(0));
-	setlocale(LC_ALL, "RU");
 	int elementsCount = 0;
 	DATA* data = nullptr;
 
@@ -209,21 +208,20 @@ int main()
 				int method = getSafeInt(true);
 				while (method > 2) method = getSafeInt(true);
 				if (method == 1) KMP(data, elementsCount, number);
-				if (method == 2) binarySearch(data, elementsCount, number);
-			else {
-				cout << "Невозможно выполнить поиск: список пуст" << endl;
-			}
+				else {
+					cout << "Невозможно выполнить поиск: список пуст" << endl;
+				}
 
-			break;
-		}
+				break;
+			}
 		case MENU_EXIT: loop = false; break;
 		default: {
 			cout << "Неверный выбор" << endl;
 		}
 		}
-		choise = -1;
+						choise = -1;
+		}
 	}
-
 
 	return 0;
 }

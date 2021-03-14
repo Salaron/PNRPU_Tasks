@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <string>
 #include <vector>
-#include <windows.h>
 
 using namespace std;
 
@@ -108,7 +107,7 @@ void solve()
 
 int main()
 {
-	SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
 	int t;
 	cout << "Количество тестов: ";
 	cin >> t;

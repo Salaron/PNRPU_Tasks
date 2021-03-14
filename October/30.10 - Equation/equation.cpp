@@ -1,11 +1,10 @@
 #include <iostream>
-#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-	SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
 	double b;
 	cout << "Введите параметр b: ";
 	cin >> b;

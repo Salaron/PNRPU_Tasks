@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+	system("chcp 1251>nul");
 	int t, n, a, b;
 	cin >> t;
 	while (t--) {

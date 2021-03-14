@@ -32,6 +32,7 @@ void qsort(Writter* a, int first, int last) {
 
 int main()
 {
+	system("chcp 1251>nul");
 
 	return 0;
 }

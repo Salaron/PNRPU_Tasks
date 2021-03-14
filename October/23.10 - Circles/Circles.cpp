@@ -1,13 +1,12 @@
 #include <iostream>
 #include <math.h>
 #include <iomanip>
-#include <windows.h>
 
 using namespace std;
 
 int main()
 {
-	SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
 	int x1, y1, r1, x2, y2, r2;
 	cin >> x1 >> y1 >> r1 >> x2 >> y2 >> r2;
 

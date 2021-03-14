@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+	system("chcp 1251>nul");
 	int rulesCount;
 	string baseString;
 	cin >> baseString >> rulesCount;

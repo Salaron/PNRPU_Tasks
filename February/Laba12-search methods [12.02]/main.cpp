@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <time.h>
-#include <windows.h>
 #include "utils.h"
 
 using namespace std;
@@ -163,8 +162,8 @@ bool markAsRemoved(DATA* arr, int* size, int value, bool index = false) {
 
 int main()
 {
-	srand(time(0));
 	system("chcp 1251>nul");
+	srand(time(0));
 	int elementsCount = 0;
 	DATA* data = nullptr;
 

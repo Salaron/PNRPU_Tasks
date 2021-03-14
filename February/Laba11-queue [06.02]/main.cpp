@@ -91,7 +91,7 @@ void solve(Queue*& l) {
 }
 
 int main() {
-	setlocale(LC_ALL, "RU");
+	system("chcp 1251>nul");
 	srand(time(0));
 	int size = 0;
 	while (size <= 0) {

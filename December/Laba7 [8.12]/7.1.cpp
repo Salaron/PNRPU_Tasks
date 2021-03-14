@@ -1,6 +1,5 @@
 #include <iostream>
 #include <time.h>
-#include <windows.h>
 using namespace std;
 
 void move(int* arr, int size) {
@@ -50,7 +49,7 @@ void PrintArray(int* arr, int n) {
 
 int main()
 {
-	SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
 	srand(time(0));
 
 	int n;

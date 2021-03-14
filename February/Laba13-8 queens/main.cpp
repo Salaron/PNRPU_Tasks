@@ -50,7 +50,7 @@ bool tryInsert(int** board, int N, int y) {
 
 int main()
 {
-    setlocale(LC_ALL, "Ru");
+	system("chcp 1251>nul");
     int N = 4;
     int** board = new int* [N];
     for (int i = 0; i < N; i++) {

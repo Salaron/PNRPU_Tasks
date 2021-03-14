@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iomanip>
 #include <math.h>
-#include <windows.h>
 
 using namespace std;
 
@@ -9,7 +8,7 @@ inline double F(double x) { return exp(x) - exp(-1 * x) - 2; }
 
 int main()
 {
-    SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
     cout << "Решение нелинейного уравнения e^x - e^-x - 2 = 0 методом половинного деления" << endl;
     double A, B;
     cout << "Введите левую границу отрезка: ";

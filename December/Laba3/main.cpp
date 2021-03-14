@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iomanip>
 #include <math.h>
-#include <windows.h>
 
 using namespace std;
 
@@ -43,7 +42,7 @@ double iteration(double A, double B, double eps)
 
 int main()
 {
-    SetConsoleOutputCP(CP_UTF8);
+	system("chcp 1251>nul");
     cout << "Решение нелинейного уравнения e^x - e^-x - 2 = 0" << endl;
     double A, B;
     cout << "Введите левую границу отрезка: ";
