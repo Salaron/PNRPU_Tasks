@@ -13,7 +13,7 @@ int getSafeInt(bool strict) {
 	{
 		cin.clear();
 		while (cin.get() != '\n');
-		cout << "Ââåäèòå öåëîå ÷èñëî, êîòîðîå áîëüøå íóëÿ!" << endl;
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†ÐµÐ»Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ðµ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð½ÑƒÐ»Ñ!" << endl;
 	}
 	cin.get();
 	return res;

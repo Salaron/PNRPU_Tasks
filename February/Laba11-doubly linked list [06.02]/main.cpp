@@ -77,16 +77,16 @@ int main()
 	srand(time(0));
 	int size = 0;
 	while (size <= 0) {
-		cout << "Ââåäèòå êîëè÷åñòâî ýëåìåíòîâ äâóíàïðàâëåííîãî ñïèñêà: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð´Ð²ÑƒÐ½Ð°Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ð¾Ð³Ð¾ ÑÐ¿Ð¸ÑÐºÐ°: ";
 		cin >> size;
 	}
-	cout << "1. Ðåàëèçàöèÿ ÷åðåç ñòðóêòóðó" << endl;
+	cout << "1. Ð ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ Ñ‡ÐµÑ€ÐµÐ· ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñƒ" << endl;
 	List* structList = createList(size);
 	printList(structList);
 	remove(structList);
 	printList(structList);
 
-	cout << endl << "2. Ðåàëèçàöèÿ ÷åðåç STL áèáëèîòåêó" << endl;
+	cout << endl << "2. Ð ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ Ñ‡ÐµÑ€ÐµÐ· STL Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÑƒ" << endl;
 	list<int> stlList;
 	createSTLlist(stlList, size);
 	copy(stlList.begin(), stlList.end(), ostream_iterator<int>(cout, " ")); // print stl list

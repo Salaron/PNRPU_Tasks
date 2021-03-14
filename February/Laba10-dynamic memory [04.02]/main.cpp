@@ -10,7 +10,7 @@ int getIntSafe(bool strict = true)
 	{
 		cin.clear();
 		while (cin.get() != '\n');
-		cout << "Ââåäèòå öåëîå ÷èñëî, êîòîðîå áîëüøå íóëÿ!" << endl;
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†ÐµÐ»Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ðµ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð½ÑƒÐ»Ñ!" << endl;
 	}
 	return res;
 }
@@ -20,7 +20,7 @@ string* createArray(int size)
 	string* arr = new string[size];
 	cin.ignore();
 	for (int i = 0; i < size; i++) {
-		cout << "Ââåäèòå " << i + 1 << " ýëåìåíò: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ " << i + 1 << " ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚: ";
 		getline(cin, arr[i]);
 	}
 	return arr;
@@ -29,7 +29,7 @@ string* createArray(int size)
 void printArray(string* arr, int size)
 {
 	if (size <= 0) {
-		cout << "Ìàññèâ ïóñò" << endl;
+		cout << "ÐœÐ°ÑÑÐ¸Ð² Ð¿ÑƒÑÑ‚" << endl;
 	}
 	else {
 		for (int i = 0; i < size; i++) {
@@ -53,7 +53,7 @@ void removeDubles(string* arr, int* size) {
 }
 
 void removeFromBottom(string*& arr, int* size, int K) {
-	(*size) -= K; // ìîæíî îñòàâèòü òîëüêî ýòó ñòðîêó, íî ýòî áóäåò ñëèøêîì ïðîñòî, so, so...
+	(*size) -= K; // Ð¼Ð¾Ð¶Ð½Ð¾ Ð¾ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ ÑÑ‚Ñƒ ÑÑ‚Ñ€Ð¾ÐºÑƒ, Ð½Ð¾ ÑÑ‚Ð¾ Ð±ÑƒÐ´ÐµÑ‚ ÑÐ»Ð¸ÑˆÐºÐ¾Ð¼ Ð¿Ñ€Ð¾ÑÑ‚Ð¾, so, so...
 	string* newarr = new string[*size];
 	for (int i = 0; i < *size; i++) {
 		newarr[i] = arr[i];
@@ -65,27 +65,27 @@ void removeFromBottom(string*& arr, int* size, int K) {
 int main()
 {
 	system("chcp 1251>nul");
-	cout << "Ââåäèòå ðàçìåð ìàññèâà: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°: ";
 	int size = getIntSafe();
 	string* arr = createArray(size);
 	printArray(arr, size);
 	removeDubles(arr, &size);
-	cout << "Ìàññèâ ïîñëå óäàëåíèÿ äóáëèêàòîâ: " << endl;
+	cout << "ÐœÐ°ÑÑÐ¸Ð² Ð¿Ð¾ÑÐ»Ðµ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ Ð´ÑƒÐ±Ð»Ð¸ÐºÐ°Ñ‚Ð¾Ð²: " << endl;
 	printArray(arr, size);
 	delete[] arr;
 
-	cout << "Ââåäèòå ðàçìåð ìàññèâà: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°: ";
 	int size2 = getIntSafe();
 	string* arr2 = createArray(size2);
 	printArray(arr2, size2);
-	cout << "Ââåäèòå êîëè÷åñòâî ñòðîê, êîòîðûå íóæíî óäàëèòü: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÑ‚Ñ€Ð¾Ðº, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð½ÑƒÐ¶Ð½Ð¾ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ: ";
 	int K = getIntSafe();
 	while (K > size2) {
-		cout << "Êîëè÷åñòâî óäàëÿåìûõ ñòðîê íå ìîæåò áûòü áîëüøå, ÷åì ñòðîê â ìàññèâå!" << endl;
+		cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑƒÐ´Ð°Ð»ÑÐµÐ¼Ñ‹Ñ… ÑÑ‚Ñ€Ð¾Ðº Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð±Ð¾Ð»ÑŒÑˆÐµ, Ñ‡ÐµÐ¼ ÑÑ‚Ñ€Ð¾Ðº Ð² Ð¼Ð°ÑÑÐ¸Ð²Ðµ!" << endl;
 		K = getIntSafe();
 	}
 	removeFromBottom(arr2, &size2, K);
-	cout << "Ìàññèâ ïîñëå óäàëåíèÿ " << K << " ïîñëåäíèõ ñòðîê:" << endl;
+	cout << "ÐœÐ°ÑÑÐ¸Ð² Ð¿Ð¾ÑÐ»Ðµ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ " << K << " Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ñ… ÑÑ‚Ñ€Ð¾Ðº:" << endl;
 	printArray(arr2, size2);
 	delete[] arr2;
 

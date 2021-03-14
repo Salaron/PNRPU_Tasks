@@ -10,7 +10,7 @@ int SafeInput(bool strict = true) {
 	while (!(cin >> result) || (cin.peek() != '\n') || (strict && result <= 0)) {
 		cin.clear();
 		while (cin.get() != '\n');
-		cout << "Ââåäèòå êîððåêòíîå ÷èñëî!" << endl;
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾!" << endl;
 	}
 	cin.get();
 	return result;
@@ -20,13 +20,13 @@ void generateFile(const char* fileName)
 {
 	ofstream file(fileName);
 	if (!file.is_open()) {
-		cout << "Îøèáêà îòêðûòèÿ ôàéëà " << fileName << endl;
+		cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð° " << fileName << endl;
 		exit(0);
 	}
-	cout << "Ââåäèòå êîëè÷åñòâî ñòðîê, êîòîðûå íåîáõîäèìî çàïèñàòü â ôàéë: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÑ‚Ñ€Ð¾Ðº, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ Ð·Ð°Ð¿Ð¸ÑÐ°Ñ‚ÑŒ Ð² Ñ„Ð°Ð¹Ð»: ";
 	int N = SafeInput();
 	for (int i = 1; i <= N; i++) {
-		cout << "Ââåäèòå " << i << " ñòðîêó: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ " << i << " ÑÑ‚Ñ€Ð¾ÐºÑƒ: ";
 		string buf;
 		getline(cin, buf);
 		file << buf << endl;
@@ -46,7 +46,7 @@ void printFile(const char* fileName)
 
 void copyFile(const char* fileName1, const char* fileName2)
 {
-	// ñêîïèðîâàòü èç ôàéëà f1 â f2 âñå ñòðîêè, â êîòîðûõ ñîäåðæèòñÿ òîëüêî îäíî ñëîâî
+	// ÑÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¸Ð· Ñ„Ð°Ð¹Ð»Ð° f1 Ð² f2 Ð²ÑÐµ ÑÑ‚Ñ€Ð¾ÐºÐ¸, Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ñ‚ÑÑ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¾Ð´Ð½Ð¾ ÑÐ»Ð¾Ð²Ð¾
 	ifstream f1(fileName1);
 	ofstream f2(fileName2);
 
@@ -69,10 +69,10 @@ void copyFile(const char* fileName1, const char* fileName2)
 
 void solve(const char* fileName)
 {
-	// îïðåäåëèòü íîìåð ñëîâà, â êîòîðîì áîëüøå âñåãî ñîãëàñíûõ áóêâ
+	// Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÑŒ Ð½Ð¾Ð¼ÐµÑ€ ÑÐ»Ð¾Ð²Ð°, Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð²ÑÐµÐ³Ð¾ ÑÐ¾Ð³Ð»Ð°ÑÐ½Ñ‹Ñ… Ð±ÑƒÐºÐ²
 	ifstream file(fileName);
 
-	string dict = "ÁáÂâÃãÄäÆæÇçÉéÊêËëÌìÍíÏïÐðÑñÒòÔôÕõÖö×÷ØøÙùBbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz";
+	string dict = "Ð‘Ð±Ð’Ð²Ð“Ð³Ð”Ð´Ð–Ð¶Ð—Ð·Ð™Ð¹ÐšÐºÐ›Ð»ÐœÐ¼ÐÐ½ÐŸÐ¿Ð Ñ€Ð¡ÑÐ¢Ñ‚Ð¤Ñ„Ð¥Ñ…Ð¦Ñ†Ð§Ñ‡Ð¨ÑˆÐ©Ñ‰BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz";
 	int maxCnt = 0;
 	int maxWordIndex = 0;
 	int wordCount = 0;
@@ -92,25 +92,25 @@ void solve(const char* fileName)
 		}
 	}
 	if (maxCnt == 0) {
-		cout << "Â ôàéëå íåò ñëîâ ñ ñîãëàñíûìè áóêâàìè" << endl;
+		cout << "Ð’ Ñ„Ð°Ð¹Ð»Ðµ Ð½ÐµÑ‚ ÑÐ»Ð¾Ð² Ñ ÑÐ¾Ð³Ð»Ð°ÑÐ½Ñ‹Ð¼Ð¸ Ð±ÑƒÐºÐ²Ð°Ð¼Ð¸" << endl;
 	}
 	else {
-		cout << "Â ñëîâå \"" << result << "\" ïîä íîìåðîì " << maxWordIndex << " íàõîäèòñÿ áîëüøå âñåãî ñîãëàñíûõ áóêâ (" << maxCnt << ")" << endl;
+		cout << "Ð’ ÑÐ»Ð¾Ð²Ðµ \"" << result << "\" Ð¿Ð¾Ð´ Ð½Ð¾Ð¼ÐµÑ€Ð¾Ð¼ " << maxWordIndex << " Ð½Ð°Ñ…Ð¾Ð´Ð¸Ñ‚ÑÑ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð²ÑÐµÐ³Ð¾ ÑÐ¾Ð³Ð»Ð°ÑÐ½Ñ‹Ñ… Ð±ÑƒÐºÐ² (" << maxCnt << ")" << endl;
 	}
 	file.close();
 }
 
 int main()
 {
-	system("chcp 1251>nul");
+	SetConsoleOutputCP(CP_UTF8);
 	remove("F1");
 	remove("F2");
 	generateFile("F1");
-	cout << "Ïîëó÷åííûé ôàéë F1: " << endl;
+	cout << "ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð½Ñ‹Ð¹ Ñ„Ð°Ð¹Ð» F1: " << endl;
 	printFile("F1");
 	cout << endl;
 	copyFile("F1", "F2");
-	cout << "Ôàéë F2 ïîñëå êîïèðîâàíèÿ èç F1: " << endl;
+	cout << "Ð¤Ð°Ð¹Ð» F2 Ð¿Ð¾ÑÐ»Ðµ ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¸Ð· F1: " << endl;
 	printFile("F2");
 	cout << endl;
 	solve("F1");
