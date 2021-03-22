@@ -3,32 +3,29 @@
 
 using namespace std;
 
-Number::Number() {
-	m_mantissa = 0.0;
-	m_poryadok = 0;
-	m_number = "0";
-}
-
-Number::Number(string n, double mantissa, int poryadok) {
-	m_mantissa = mantissa;
-	m_poryadok = poryadok;
-	m_number = n;
-}
-
-Number::Number(const Number& n) {
-	m_mantissa = n.m_mantissa;
-	m_poryadok = n.m_poryadok;
-	m_number = n.m_number;
-}
-
-void Number::Show() {
-	cout << "Мантисса: " << m_mantissa << endl;
-	cout << "Порядок: " << m_poryadok << endl;
-
+void Show(Number num) {
+	num.Show();
 }
 
 int main() {
 	system("chcp 1251>nul");
-	Number test1;
-	test1.Show();
+	cout << "n1; конструктор без параметров" << endl;
+	Number n1;
+	n1.Show();
+
+	cout << "n2; конструктор с параметрами" << endl;
+	Number n2(0.425, 3);
+	n2.Show();
+
+	cout << "n3; конструктор копирования" << endl;
+	Number n3 = n2;
+	n3.Show();
+	double mantissa;
+	int poryadok;
+	cout << "Введите мантиссу: "; cin >> mantissa;
+	cout << "Введите порядок: "; cin >> poryadok;
+	n3.setMantissa(mantissa);
+	n3.setPoryadok(poryadok);
+	Show(n3);
+	return 0;
 }
