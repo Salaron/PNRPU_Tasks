@@ -6,6 +6,7 @@ using namespace std;
 
 int main() {
 	system("chcp 1251>nul");
+
 	cout << "Создание вектора типа int на 5 элементов" << endl;
 	Vector<int> a(5, 0);
 	cout << a << endl;

@@ -16,6 +16,9 @@ class Time {
 	}
 public:
 
+	Time();
+	Time(int mins, int secs);
+
 	void addSeconds(int seconds) {
 		m_secs += seconds;
 		correctOverflow();

@@ -2,6 +2,16 @@
 
 using namespace std;
 
+Time::Time() {
+	m_mins = 0;
+	m_secs = 0;
+}
+
+Time::Time(int mins, int secs) {
+	addSeconds(mins * 60 + secs);
+	correctOverflow();
+}
+
 istream& operator >>(istream& in, Time& p)
 {
 	p.m_mins = -1;
@@ -62,6 +72,6 @@ Time& Time::operator=(const Time& t)
 Time Time::operator * (const int k) {
 	Time n;
 	int total = m_mins * 60 + m_secs;
-	n.addSeconds(total);
+	n.addSeconds(total * k);
 	return n;
 }

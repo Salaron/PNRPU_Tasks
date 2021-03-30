@@ -113,13 +113,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba16-sort sort sort", "Ma
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Laba18 [OOP]", "Laba18 [OOP]", "{F50D0288-0CBD-40E5-B103-C1CF5611FF80}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba18.1-Classes", "March\OOP\Laba18.1-Classes\Laba18-Classes.vcxproj", "{A1F4AB90-5B37-408E-8A14-522BC1C8610C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba18.1 - Classes", "March\OOP\Laba18.1 - Classes\Laba18-Classes.vcxproj", "{A1F4AB90-5B37-408E-8A14-522BC1C8610C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba18.2-Constructors", "March\OOP\Laba18.2-Constructors\Laba18.2-Constructors.vcxproj", "{3DC25C11-1FBC-493C-9285-680261D8F420}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba18.2 - Constructors", "March\OOP\Laba18.2 - Constructors\Laba18.2-Constructors.vcxproj", "{3DC25C11-1FBC-493C-9285-680261D8F420}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba19-Stack via Class", "March\Laba19-Stack via Class\Laba19-Stack via Class.vcxproj", "{1AAC8596-5E53-491E-A75D-942899DF4D46}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba18.3-Overload", "March\OOP\Laba18.3-Overload\Laba18.3-Overload.vcxproj", "{1F3ED2F1-B687-4A60-AF48-99D0DA49D45C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba18.3 - Overload", "March\OOP\Laba18.3 - Overload\Laba18.3-Overload.vcxproj", "{1F3ED2F1-B687-4A60-AF48-99D0DA49D45C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba17-hash", "March\Laba17-hash\Laba17-hash.vcxproj", "{CA589570-A60E-4962-ADF6-0DC76AAE449A}"
 EndProject
@@ -130,6 +130,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba18.6 - Vector", "March\OOP\Laba18.6 - Vector\Laba18.6 - Vector.vcxproj", "{02C7A5D0-8123-427B-87F9-F0EB823E0FFC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba18.7 - Templates", "March\OOP\Laba18.7 - Templates\Laba18.7 - Templates.vcxproj", "{209311F9-8057-4788-9A24-EE6242554ED4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba18.8 - Events", "March\OOP\Laba18.8 - Events\Laba18.8 - Events.vcxproj", "{65C46852-2FAE-4E02-A8BA-B4B9A53AB6DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -579,6 +581,14 @@ Global
 		{209311F9-8057-4788-9A24-EE6242554ED4}.Release|x64.Build.0 = Release|x64
 		{209311F9-8057-4788-9A24-EE6242554ED4}.Release|x86.ActiveCfg = Release|Win32
 		{209311F9-8057-4788-9A24-EE6242554ED4}.Release|x86.Build.0 = Release|Win32
+		{65C46852-2FAE-4E02-A8BA-B4B9A53AB6DE}.Debug|x64.ActiveCfg = Debug|x64
+		{65C46852-2FAE-4E02-A8BA-B4B9A53AB6DE}.Debug|x64.Build.0 = Debug|x64
+		{65C46852-2FAE-4E02-A8BA-B4B9A53AB6DE}.Debug|x86.ActiveCfg = Debug|Win32
+		{65C46852-2FAE-4E02-A8BA-B4B9A53AB6DE}.Debug|x86.Build.0 = Debug|Win32
+		{65C46852-2FAE-4E02-A8BA-B4B9A53AB6DE}.Release|x64.ActiveCfg = Release|x64
+		{65C46852-2FAE-4E02-A8BA-B4B9A53AB6DE}.Release|x64.Build.0 = Release|x64
+		{65C46852-2FAE-4E02-A8BA-B4B9A53AB6DE}.Release|x86.ActiveCfg = Release|Win32
+		{65C46852-2FAE-4E02-A8BA-B4B9A53AB6DE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -642,6 +652,7 @@ Global
 		{D1FCA1A8-4B5E-43F2-863B-BA5B48FEB72E} = {F50D0288-0CBD-40E5-B103-C1CF5611FF80}
 		{02C7A5D0-8123-427B-87F9-F0EB823E0FFC} = {F50D0288-0CBD-40E5-B103-C1CF5611FF80}
 		{209311F9-8057-4788-9A24-EE6242554ED4} = {F50D0288-0CBD-40E5-B103-C1CF5611FF80}
+		{65C46852-2FAE-4E02-A8BA-B4B9A53AB6DE} = {F50D0288-0CBD-40E5-B103-C1CF5611FF80}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DBFB44C6-DDFB-42CD-85BF-7CA9D97ACFCF}

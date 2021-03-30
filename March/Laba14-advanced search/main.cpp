@@ -4,6 +4,7 @@
 #include <time.h>
 #include "utils.h"
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -122,12 +123,109 @@ bool markAsRemoved(DATA* arr, int* size, string value) {
 	return removed;
 }
 
-void KMP(DATA* arr, int size, string value) {
+bool KMP(string str, string key)
+{
+	int strLen = str.length();
+	int keyLen = key.length();
 
+	if (strLen < keyLen)
+	{
+		return false;
+	}
+
+	vector<int> pi(keyLen + 1);
+	for (int i = 1; i < keyLen; i++)
+	{
+		int j = pi[i + 1];
+
+		while (j > 0 && key[j] != key[i]) {
+			j = pi[j];
+		}
+
+		if (j > 0 || key[j] == key[i]) {
+			pi[i + 1] = j + 1;
+		}
+	}
+
+	for (int i = 0, j = 0; i < strLen; i++)
+	{
+		if (str[i] == key[j])
+		{
+			if (++j == keyLen) {
+				return true;
+			}
+		}
+		else if (j > 0)
+		{
+			j = pi[j];
+			i--;
+		}
+	}
+
+	return false;
+}
+
+void KMP(DATA* arr, int size, string value) {
+	for (int i = 0; i < size; i++) {
+		bool result = KMP(arr[i].number, value);
+		if (result == true) {
+			arr[i].print();
+		}
+	}
 }
 
 void BM(DATA* arr, int size, string value) {
+	if (value.length() <= 1) {
+		cout << "Невозможно выполнить поиск, длина ключа должна быть больше двух символов! " << endl;
+	}
+	map<char, int> offsetTable;
+	for (int i = 0; i <= value.size(); i++) {
+		const char* str = value.c_str();
+		int offset = value.size() - i - 1;
+		if (i == value.size()) offset = value.size() - 1;
+		if (offsetTable[str[offset]] != 0) continue;
 
+		offsetTable[str[offset]] = i;
+	}
+	cout << "Таблица смещений: " << endl;
+	for (auto const& x : offsetTable) {
+		cout << x.first << " ";
+	}
+	cout << endl;
+	for (auto const& x : offsetTable) {
+		cout << x.second << " ";
+	}
+	cout << endl << endl;
+
+	for (int i = 0; i < size; i++) {
+		int pos = value.size() - 1;
+		bool f = false;
+		while (pos < arr[i].number.size() && f == false) {
+			if (arr[i].number[pos] != value[value.size() - 1]) {
+				int offset = value.size();
+				if (offsetTable[arr[i].number[pos]] != 0) offset = offsetTable[arr[i].number[pos]];
+				pos += offset;
+			}
+			else {
+				for (int j = value.size() - 2; j >= 0; j--) {
+					if (value[j] != arr[i].number[pos - value.size() + j + 1]) {
+						int offset = value.size();
+						if (offsetTable[arr[i].number[pos]] != 0) offset = offsetTable[arr[i].number[pos]] - 1;
+						pos += offset;
+						if (pos >= arr[i].number.size()) break;
+					}
+					else {
+						if (j == 0) {
+							f = true;
+						}
+					}
+				}
+			}
+		}
+		if (f == true) {
+			arr[i].print();
+		}
+	}
 }
 
 
@@ -135,8 +233,9 @@ int main()
 {
 	system("chcp 1251>nul");
 	srand(time(0));
-	int elementsCount = 0;
+	int elementsCount = 1000;
 	DATA* data = nullptr;
+	generate(data, elementsCount);
 
 	int choise = -1;
 	bool loop = true;
@@ -208,9 +307,10 @@ int main()
 				int method = getSafeInt(true);
 				while (method > 2) method = getSafeInt(true);
 				if (method == 1) KMP(data, elementsCount, number);
-				else {
-					cout << "Невозможно выполнить поиск: список пуст" << endl;
-				}
+				if (method == 2) BM(data, elementsCount, number);
+			else {
+				cout << "Невозможно выполнить поиск: список пуст" << endl;
+			}
 
 				break;
 			}
@@ -222,6 +322,5 @@ int main()
 						choise = -1;
 		}
 	}
-
 	return 0;
 }

@@ -11,8 +11,8 @@ int main() {
 	cout << a << endl;
 
 	Vector b(7);
-	cout << b << endl;
 	b = a;
+	cout << "b = " << b << endl;
 	cout << b << endl;
 	b[0] = 1970;
 	cout << b << endl;
@@ -22,6 +22,7 @@ int main() {
 	cout << c << endl;
 	cout << "Len 'a': " << a() << endl << "Len 'b': " << b() << endl << "Len 'c': " << c() << endl;
 
+	cout << "Vector a via iterator: ";
 	for (Iterator i = b.first(); i != b.last(); i++)
 		cout << *i << " ";
 
