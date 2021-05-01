@@ -27,19 +27,22 @@ void onReshape(int w, int h)
 	glutReshapeWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
 }
 
+string help = "+	Add element to tree\n-	Remove element from tree\nb	Convert to binary tree\nn	Convert to balanced tree\nh	Show this message";
 char action = ' ';
 bool inCollectMode = false;
 string str = "";
 string message = "";
 void onKeyboardAction(unsigned char key, int x, int y) {
-	if (inCollectMode && key != 13 && key >= '0' && key <= '9') {
-		cout << key;
-		str += key;
-		message += key;
-		if (key == 8) { // backspace
-			cout << " \b";
-			str = str.substr(0, str.size() - 2);
-			message = message.substr(0, message.size() - 2);
+	if (inCollectMode && key != 13 && (key >= '0' && key <= '9' || key == 8)) {
+		if (key == 8 && str.length() > 0) { // backspace			
+			cout << "\b \b";
+			str = str.substr(0, str.size() - 1);
+			message = message.substr(0, message.size() - 1);
+		}
+		else {
+			cout << key;
+			str += key;
+			message += key;
 		}
 	}
 	if (inCollectMode && key == 13) {
@@ -60,7 +63,7 @@ void onKeyboardAction(unsigned char key, int x, int y) {
 		switch (key) {
 		case 'h':
 		case 'р':
-			cout << "help lol" << endl;
+			cout << help << endl;
 			break;
 
 		case '+':
@@ -120,6 +123,7 @@ int main(int argc, char* argv[]) {
 	//glutIdleFunc(display); // never do like this
 	glutKeyboardFunc(onKeyboardAction);
 	glutPassiveMotionFunc(onMouseMove);
+	cout << help << endl;
 	glutMainLoop();
 	return 0;
 }
