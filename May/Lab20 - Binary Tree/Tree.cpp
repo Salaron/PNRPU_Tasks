@@ -34,6 +34,7 @@ void Tree::insertNode(Node* node) {
 		{
 			lastNode->right = node;
 		}
+		node->parent = lastNode;
 	}
 	update();
 }
@@ -107,82 +108,83 @@ bool Tree::remove(int value) {
 	}
 
 	Node* parent = node->parent;
+	Node* left = node->left;
+	Node* right = node->right;
 	if (parent == nullptr) {
-		// this is a parent...
-		// do a trick
-		if (node->left && node->right) {
-			// make left node is a parent
-			root = node->left;
-			root->parent = nullptr;
-			insertNode(node->right);
-			if (isSearch)
-				convertToBinary();
-			else
-				convertToBalanced();
+		// this is root node
+		// make one of child as root and connect second parent to the new tree 
+		bool rootAssigned = false;
+		if (left != nullptr) {
+			root = left;
+			left->parent = nullptr;
+			rootAssigned = true;
 		}
-		else if (node->left != nullptr) {
-			root = node->left;
-			root->parent = nullptr;
+		if (right != nullptr) {
+			if (rootAssigned) {
+				insertNode(right);
+				// rebuild tree
+				if (isSearch)
+					convertToSearch();
+				else
+					convertToBalanced();
+			}
+			else {
+				root = right;
+				right->parent = nullptr;
+				rootAssigned = true;
+			}
 		}
-		else if (node->right != nullptr) {
-			root = node->right;
-			root->parent = nullptr;
-		}
-		else {
-			delete node; // shrug
+		if (!rootAssigned) {
+			delete root;
 			root = nullptr;
 		}
 	}
 	else {
-		// connect parent to childs of this node
-		Node* left = node->left;
-		Node* right = node->right;
-
-		bool isLeftInParent = parent->left == node;
+		// connect parent to childs of the node
+		Node*& test = parent->left == node ? parent->left : parent->right;
 		if (node->left != nullptr && node->right != nullptr) {
-			// oh shit here we go again..
+			// the node have 2 childs
+			// connect left child to the parent of the node
+			// and insert right node to the tree
 			parent->left = node->left;
 			node->left->parent = parent;
 			insertNode(node->right);
+			// rebuild tree
 			if (isSearch)
-				convertToBinary();
+				convertToSearch();
 			else
 				convertToBalanced();
-		} else if (node->left != nullptr) {
-			if (isLeftInParent) {
-				// replace parent left node
-				parent->left = node->left;
-				// rebind
-				node->left->parent = parent;
-			}
-			else {
-				// otherwise parent's right
-				parent->right = node->left;
-				node->left->parent = parent;
-			}
-		} else if (node->right != nullptr) {
-			if (isLeftInParent) {
-				parent->right = node->right;
-				node->right->parent = parent;
-			}
-			else {
-				parent->right = node->right;
-				node->right->parent = parent;
-			}
+		}
+		else if (node->left != nullptr) {
+			// connect left child to the parent of the node
+			test = node->left;
+			node->left->parent = parent;
+
+		}
+		else if (node->right != nullptr) {
+			// connect right child to the parent of this node
+			test = node->right;
+			node->right->parent = parent;
 		}
 		else {
-			if (isLeftInParent) {
-				parent->left = nullptr;
-			}
-			else {
-				parent->right = nullptr;
-			}
-			delete node;
+			// node doesn't have childs
+			// disconnect it from parent
+			test = nullptr;
 		}
+
+		// disconnect childs to prevent calling theirs destructors
+		node->left = node->right = nullptr;
+		// and remove the node
+		delete node;
 	}
 
 	update();
 	return true;
+}
+
+void Tree::reset() {
+	delete root;
+	root = nullptr;
 }
 
 Node* Tree::find(int value) {
@@ -202,22 +204,23 @@ void Tree::convertToBalanced() {
 	sort(tree.begin(), tree.end());
 	delete root;
 	root = nullptr;
+	isSearch = false;
 	for (int i = 0; i < tree.size(); i++) {
 		insertBalanced(tree[i]);
 	}
 }
 
-void Tree::convertToBinary() {
+void Tree::convertToSearch() {
 	// collect all data to array
 	// sort it
 	// root is middle
 	vector<int> tree = getArray();
 	sort(tree.begin(), tree.end());
 
-	// remove root
+	// remove current root
 	delete root;
 	root = nullptr;
-
+	isSearch = true;
 	if (tree.size() > 0) {
 		int middle = tree.size() / 2;
 		root = new Node(tree[middle]);
@@ -268,7 +271,7 @@ int Tree::getHeightRecurcive(Node* node) {
 void Tree::update() {
 	// update root node
 	int levels = getHeight();
-	if (levels == 0) return;
+	if (levels == 0) return; // to prevent dividing by zero if there is no any node
 	levelHeight = WINDOW_HEIGHT / getHeight();
 	nodeRadius = fmin(
 		fmin(((WINDOW_WIDTH / pow(2, levels) * 1.0) / 2) * 0.8, ((WINDOW_HEIGHT / levels) / 2) * 0.8)
@@ -295,7 +298,7 @@ void Tree::updateRecurcive(Node* node, int col) {
 	node->y = WINDOW_HEIGHT - (node->level * levelHeight - levelHeight / 2);
 
 	updateRecurcive(node->left, col << 1);
-	updateRecurcive(node->right, (col << 1)| 1);
+	updateRecurcive(node->right, (col << 1) | 1);
 }
 
 void Tree::markHovered(int x, int y) {

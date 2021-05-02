@@ -12,6 +12,7 @@ public:
 	int nodeRadius = 1;
 	int levelHeight = 0;
 
+	void reset();
 	void insertNode(Node* node);
 	void insertBalanced(int value);
 	void insert(int value);
@@ -20,13 +21,14 @@ public:
 
 	void update();
 	void draw();
+	void markHovered(int x, int y);
+
 
 	int getLeafCount();
 	int getHeight();
-	void markHovered(int x, int y);
 
 	void convertToBalanced();
-	void convertToBinary();
+	void convertToSearch();
 
 	vector<int> getArray();
 private:

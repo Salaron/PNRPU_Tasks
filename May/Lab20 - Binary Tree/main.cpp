@@ -27,11 +27,11 @@ void onReshape(int w, int h)
 	glutReshapeWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
 }
 
-string help = "+	Add element to tree\n-	Remove element from tree\nb	Convert to binary tree\nn	Convert to balanced tree\nh	Show this message";
+string help = "+	Add element to tree\n-	Remove element from tree\ns	Convert to binary search tree\nb	Convert to balanced tree\nr	Reset tree\nh	Show this message";
 char action = ' ';
 bool inCollectMode = false;
 string str = "";
-string message = "";
+string message = help;
 void onKeyboardAction(unsigned char key, int x, int y) {
 	if (inCollectMode && key != 13 && (key >= '0' && key <= '9' || key == 8)) {
 		if (key == 8 && str.length() > 0) { // backspace			
@@ -57,12 +57,13 @@ void onKeyboardAction(unsigned char key, int x, int y) {
 		message = str = "";
 		action = ' ';
 		inCollectMode = false;
-		cout << "\n";
+		cout << endl;
 	}
 	else if (!inCollectMode) {
 		switch (key) {
 		case 'h':
 		case 'р':
+			message = help;
 			cout << help << endl;
 			break;
 
@@ -79,36 +80,47 @@ void onKeyboardAction(unsigned char key, int x, int y) {
 			action = '-';
 			break;
 
-		case 'и':
-		case 'b':
-			cout << "Convert to binary search tree!" << endl;
-			tree.convertToBinary();
+		case 'ы':
+		case 's':
+			message = "Binary search tree";
+			cout << message << endl;
+			tree.convertToSearch();
 			break;
 
-		case 'т':
-		case 'n':
-			cout << "Convert to balanced tree!" << endl;
+		case 'и':
+		case 'b':
+			message = "Balanced tree";
+			cout << message << endl;
 			tree.convertToBalanced();
+			break;
+		case 'r':
+			message = "Reset tree";
+			cout << message << endl;
+			tree.reset();
+			break;
 		}
 	}
 	glutPostRedisplay();
-
 }
 
+string debugMessage = "";
 void display()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	tree.draw(); // draw treeeeeeee
 	drawText(WINDOW_WIDTH - 70, WINDOW_HEIGHT - 18, "Laws: " + to_string(tree.getLeafCount()), GLUT_BITMAP_TIMES_ROMAN_24);
 	if (message.length() > 0) {
-		drawText(123, WINDOW_HEIGHT - 18, message, GLUT_BITMAP_TIMES_ROMAN_24);
+		drawText(10, WINDOW_HEIGHT - 18, message, GLUT_BITMAP_TIMES_ROMAN_24, GL_TEXT_ALIGN_LEFT);
 	}
+	drawText(10, 10, debugMessage, GLUT_BITMAP_TIMES_ROMAN_24, GL_TEXT_ALIGN_LEFT);
 	glutSwapBuffers();
 }
 
-
 void onMouseMove(int x, int y) {
 	tree.markHovered(x, WINDOW_HEIGHT - y);
+#ifdef _DEBUG
+	debugMessage = to_string(x) + " " + to_string(WINDOW_HEIGHT - y);
+#endif
 	glutPostRedisplay(); // redraw
 }
 
@@ -116,13 +128,14 @@ int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-	glutCreateWindow("Test");
+	glutCreateWindow("Binary Tree");
 	initGL();
 	glutReshapeFunc(onReshape);
 	glutDisplayFunc(display);
 	//glutIdleFunc(display); // never do like this
 	glutKeyboardFunc(onKeyboardAction);
 	glutPassiveMotionFunc(onMouseMove);
+	cout << "Note: press buttons in the main window, not console!" << endl;
 	cout << help << endl;
 	glutMainLoop();
 	return 0;
