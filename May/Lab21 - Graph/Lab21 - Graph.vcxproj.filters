@@ -18,24 +18,15 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tree.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Node.cpp">
+    <ClCompile Include="Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Node.h">
+    <ClInclude Include="..\Lab20 - Binary Tree\glbag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="glbag.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="colors.h">
+    <ClInclude Include="Graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

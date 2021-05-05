@@ -4,18 +4,19 @@
 #include "Node.h"
 #include <vector>
 #include "glbag.h"
+#include "colors.h"
 
 using namespace std;
 
-extern int WINDOW_WIDTH = 960;
+extern int WINDOW_WIDTH = 1138;
 extern int WINDOW_HEIGHT = 640;
 
-Tree tree;
+Tree<int> tree;
 
 void initGL() {
 	glLoadIdentity();
 	glShadeModel(GL_SMOOTH);
-	glClearColor(1, 1, 1, 1);
+	glClearColor(bgColor.red, bgColor.green, bgColor.blue, 1);
 	glMatrixMode(GL_PROJECTION);
 	glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 	gluOrtho2D(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT);

@@ -1,15 +1,18 @@
 #pragma once
+#ifndef NODE_HEADER
+#define NODE_HEADER
+template <typename T>
 class Node {
 public:
-	Node(int value);
-	Node(Node* parent, int value);
+	Node(T value);
+	Node(Node<T>* parent, T value);
 	~Node();
 
 	Node* parent = nullptr;
 	Node* left = nullptr;
 	Node* right = nullptr;
 
-	int value;
+	T value;
 	int level = 1;
 	int radius = 80;
 	bool hovered = false;
@@ -20,3 +23,6 @@ public:
 	void draw();
 	bool isHovered(int x, int y);
 };
+
+#include "Node.cpp"
+#endif

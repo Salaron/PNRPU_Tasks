@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{bf317912-4430-46a3-98bd-35e6b18ae9b2}</ProjectGuid>
-    <RootNamespace>Lab20BinaryTree</RootNamespace>
+    <ProjectGuid>{4c028017-4e8b-400f-a684-d4c48bad8400}</ProjectGuid>
+    <RootNamespace>CreativeWorkKommi</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,15 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Kommi.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Tree.cpp" />
-    <ClCompile Include="Tree.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="colors.h" />
-    <ClInclude Include="glbag.h" />
+    <ClInclude Include="Kommi.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Tree.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

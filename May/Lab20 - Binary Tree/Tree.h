@@ -1,46 +1,53 @@
 #pragma once
+#ifndef TREE_HEADER
+#define TREE_HEADER
 #include "Node.h"
 #include <vector>
 
 using namespace std;
 
+template <typename T>
 class Tree {
 public:
 	Tree();
 
-	Node* root = nullptr;
+	Node<T>* root = nullptr;
 	int nodeRadius = 1;
 	int levelHeight = 0;
 
 	void reset();
-	void insertNode(Node* node);
-	void insertBalanced(int value);
-	void insert(int value);
-	bool remove(int value);
-	Node* find(int value);
+	virtual void insertNode(Node<T>* node);
+	virtual void insertBalanced(T value);
+	virtual void insert(T value);
+	virtual bool remove(T value);
+	virtual Node<T>* find(T value);
 
 	void update();
+	void update(Node<T>* node, int col);
 	void draw();
-	void markHovered(int x, int y);
+	void draw(Node<T>* node);
 
+	void markHovered(int x, int y);
+	void markHovered(Node<T>* node, int x, int y);
 
 	int getLeafCount();
+	int getLeafCount(Node<T>* node);
+
 	int getHeight();
+	int getHeight(Node<T>* node);
+
 
 	void convertToBalanced();
 	void convertToSearch();
 
-	vector<int> getArray();
+	vector<T> getArray();
 private:
 	bool isSearch = false;
-	void drawRecurcive(Node* node);
-	void updateRecurcive(Node* node, int col);
-	void markHoveredRecurcive(Node* node, int x, int y);
-	int  getLeafCountRecurcive(Node* node);
-	int  getHeightRecurcive(Node* node);
 
-	void getArrayRecurcive(Node*, vector<int>& res);
-
-	Node* getLast(Node*, int, int);
-	Node* findRecurcive(Node* node, int value);
+	void getArrayRecurcive(Node<T>*, vector<T>& res);
+	Node<T>* getLast(Node<T>*, int, int);
+	Node<T>* findRecurcive(Node<T>* node, T value);
 };
+
+#include "Tree.cpp"
+#endif

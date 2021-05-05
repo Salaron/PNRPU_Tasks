@@ -1,3 +1,5 @@
+#ifndef TREE_CPP
+#define TREE_CPP
 #include "Tree.h"
 #include "Node.h"
 #include <math.h>
@@ -7,19 +9,21 @@
 extern int WINDOW_WIDTH;
 extern int WINDOW_HEIGHT;
 
-const int MIN_RADIUS = 20;
+const int MIN_RADIUS = 15;
 const int MAX_RADIUS = 80;
 
-Tree::Tree(void) {
+template <typename T>
+Tree<T>::Tree(void) {
 
 }
 
-void Tree::insertNode(Node* node) {
+template <typename T>
+void Tree<T>::insertNode(Node<T>* node) {
 	if (root == nullptr) {
 		root = node;
 	}
 	else {
-		Node* lastNode = getLast(root, 1, getHeight());
+		Node<T>* lastNode = getLast(root, 1, getHeight());
 		if (lastNode == nullptr) {
 			lastNode = root;
 			while (lastNode->left != nullptr) {
@@ -39,13 +43,14 @@ void Tree::insertNode(Node* node) {
 	update();
 }
 
-void Tree::insertBalanced(int value) {
+template <typename T>
+void Tree<T>::insertBalanced(T value) {
 	if (root == nullptr) {
-		root = new Node(value);
+		root = new Node<T>(value);
 	}
 	else {
 		int h = getHeight();
-		Node* cur = getLast(root, 1, h);
+		Node<T>* cur = getLast(root, 1, h);
 		if (cur == nullptr) {
 			cur = root;
 			while (cur->left != nullptr) {
@@ -54,28 +59,30 @@ void Tree::insertBalanced(int value) {
 		}
 		
 		if (cur->left == nullptr) {
-			cur->left = new Node(cur, value);
+			cur->left = new Node<T>(cur, value);
 		}
 		else if (cur->right == nullptr) {
-			cur->right = new Node(cur, value);
+			cur->right = new Node<T>(cur, value);
 		}
 	}
 	update();
 }
 
-Node* Tree::getLast(Node* node, int level, int lastLevel) {
+template <typename T>
+Node<T>* Tree<T>::getLast(Node<T>* node, int level, int lastLevel) {
 	if (level == lastLevel)
 		return nullptr;
 	if (level < lastLevel && node->left == nullptr || node->right == nullptr)
 		return node;
-	Node* tmp = getLast(node->left, level + 1, lastLevel);
+	Node<T>* tmp = getLast(node->left, level + 1, lastLevel);
 	if (tmp != nullptr) return tmp;
 	return getLast(node->right, level + 1, lastLevel);
 }
 
-void Tree::insert(int value) {
-	Node* r = root;
-	Node* current = root;
+template <typename T>
+void Tree<T>::insert(T value) {
+	Node<T>* r = root;
+	Node<T>* current = root;
 	while (current) {
 		r = current;
 		if (current->value > value) {
@@ -86,10 +93,10 @@ void Tree::insert(int value) {
 		}
 	}
 	if (!r) {
-		root = new Node(value);
+		root = new Node<T>(value);
 	}
 	else {
-		current = new Node(r, value);
+		current = new Node<T>(r, value);
 		if (value < r->value) {
 			r->left = current;
 		}
@@ -101,15 +108,16 @@ void Tree::insert(int value) {
 	update();
 }
 
-bool Tree::remove(int value) {
-	Node* node = find(value);
+template <typename T>
+bool Tree<T>::remove(T value) {
+	Node<T>* node = find(value);
 	if (node == nullptr) {
 		return false;
 	}
 
-	Node* parent = node->parent;
-	Node* left = node->left;
-	Node* right = node->right;
+	Node<T>* parent = node->parent;
+	Node<T>* left = node->left;
+	Node<T>* right = node->right;
 	if (parent == nullptr) {
 		// this is root node
 		// make one of child as root and connect second parent to the new tree 
@@ -141,7 +149,7 @@ bool Tree::remove(int value) {
 	}
 	else {
 		// connect parent to childs of the node
-		Node*& test = parent->left == node ? parent->left : parent->right;
+		Node<T>*& test = parent->left == node ? parent->left : parent->right;
 		if (node->left != nullptr && node->right != nullptr) {
 			// the node have 2 childs
 			// connect left child to the parent of the node
@@ -182,24 +190,28 @@ bool Tree::remove(int value) {
 	return true;
 }
 
-void Tree::reset() {
+template <typename T>
+void Tree<T>::reset() {
 	delete root;
 	root = nullptr;
 }
 
-Node* Tree::find(int value) {
+template <typename T>
+Node<T>* Tree<T>::find(T value) {
 	return findRecurcive(root, value);
 }
 
-Node* Tree::findRecurcive(Node* node, int value) {
+template <typename T>
+Node<T>* Tree<T>::findRecurcive(Node<T>* node, T value) {
 	if (node == nullptr) return nullptr;
 	if (node->value == value) return node;
-	Node* tmp = findRecurcive(node->left, value);
+	Node<T>* tmp = findRecurcive(node->left, value);
 	if (tmp != nullptr) return tmp;
 	return findRecurcive(node->right, value);
 }
 
-void Tree::convertToBalanced() {
+template <typename T>
+void Tree<T>::convertToBalanced() {
 	vector<int> tree = getArray();
 	sort(tree.begin(), tree.end());
 	delete root;
@@ -210,7 +222,8 @@ void Tree::convertToBalanced() {
 	}
 }
 
-void Tree::convertToSearch() {
+template <typename T>
+void Tree<T>::convertToSearch() {
 	// collect all data to array
 	// sort it
 	// root is middle
@@ -223,7 +236,7 @@ void Tree::convertToSearch() {
 	isSearch = true;
 	if (tree.size() > 0) {
 		int middle = tree.size() / 2;
-		root = new Node(tree[middle]);
+		root = new Node<T>(tree[middle]);
 		for (int i = 0; i < middle; i++) {
 			insert(tree[i]);
 		}
@@ -234,41 +247,48 @@ void Tree::convertToSearch() {
 	}
 }
 
-vector<int> Tree::getArray() {
+template <typename T>
+vector<T> Tree<T>::getArray() {
 	vector<int> result;
 	getArrayRecurcive(root, result);
 	return result;
 }
 
-void Tree::getArrayRecurcive(Node* cur, vector<int>& arr) {
+template <typename T>
+void Tree<T>::getArrayRecurcive(Node<T>* cur, vector<T>& arr) {
 	if (cur == nullptr) return;
 	getArrayRecurcive(cur->left, arr);
 	arr.push_back(cur->value);
 	getArrayRecurcive(cur->right, arr);
 }
 
-void Tree::draw() {
-	drawRecurcive(root);
+template <typename T>
+void Tree<T>::draw() {
+	draw(root);
 }
 
-void Tree::drawRecurcive(Node* node) {
+template <typename T>
+void Tree<T>::draw(Node<T>* node) {
 	if (node == nullptr) return;
 	node->draw();
 
-	drawRecurcive(node->left);
-	drawRecurcive(node->right);
+	draw(node->left);
+	draw(node->right);
 }
 
-int Tree::getHeight() {
-	return getHeightRecurcive(root);
+template <typename T>
+int Tree<T>::getHeight() {
+	return getHeight(root);
 }
 
-int Tree::getHeightRecurcive(Node* node) {
+template <typename T>
+int Tree<T>::getHeight(Node<T>* node) {
 	if (node == nullptr) return 0;
-	return fmax(getHeightRecurcive(node->left) + 1, getHeightRecurcive(node->right) + 1);
+	return fmax(getHeight(node->left) + 1, getHeight(node->right) + 1);
 }
 
-void Tree::update() {
+template <typename T>
+void Tree<T>::update() {
 	// update root node
 	int levels = getHeight();
 	if (levels == 0) return; // to prevent dividing by zero if there is no any node
@@ -278,10 +298,11 @@ void Tree::update() {
 		, MAX_RADIUS);
 	nodeRadius = fmax(nodeRadius, MIN_RADIUS);
 
-	updateRecurcive(root, 1);
+	update(root, 1);
 }
 
-void Tree::updateRecurcive(Node* node, int col) {
+template <typename T>
+void Tree<T>::update(Node<T>* node, int col) {
 	if (node == nullptr) return;
 	if (node->parent == nullptr) {
 		node->level = 1;
@@ -292,38 +313,43 @@ void Tree::updateRecurcive(Node* node, int col) {
 	node->radius = nodeRadius;
 	
 	int absCol = col - pow(2, node->level - 1) + 1;
-	double ww = ((WINDOW_WIDTH - 50) / pow(2, node->level - 1));
+	double ww = ((WINDOW_WIDTH) / pow(2, node->level - 1));
 
 	node->x = ww * (absCol - 1) + ww / 2;
 	node->y = WINDOW_HEIGHT - (node->level * levelHeight - levelHeight / 2);
 
-	updateRecurcive(node->left, col << 1);
-	updateRecurcive(node->right, (col << 1) | 1);
+	update(node->left, col << 1);
+	update(node->right, (col << 1) | 1);
 }
 
-void Tree::markHovered(int x, int y) {
-	markHoveredRecurcive(root, x, y);
+template <typename T>
+void Tree<T>::markHovered(int x, int y) {
+	markHovered(root, x, y);
 }
 
-void Tree::markHoveredRecurcive(Node* node, int x, int y) {
+template <typename T>
+void Tree<T>::markHovered(Node<T>* node, int x, int y) {
 	if (node == nullptr) return;
 
 	node->hovered = node->isHovered(x, y);
-	markHoveredRecurcive(node->left, x, y);
-	markHoveredRecurcive(node->right, x, y);
+	markHovered(node->left, x, y);
+	markHovered(node->right, x, y);
 };
 
-int Tree::getLeafCount() {
-	return getLeafCountRecurcive(root);
+template <typename T>
+int Tree<T>::getLeafCount() {
+	return getLeafCount(root);
 }
 
-int Tree::getLeafCountRecurcive(Node* node) {
+template <typename T>
+int Tree<T>::getLeafCount(Node<T>* node) {
 	if (node == nullptr) return 0;
 	int count = 0;
 	if (node->left == nullptr && node->right == nullptr) {
 		count += 1;
 	}
-	count += getLeafCountRecurcive(node->left);
-	count += getLeafCountRecurcive(node->right);
+	count += getLeafCount(node->left);
+	count += getLeafCount(node->right);
 	return count;
 }
+#endif
