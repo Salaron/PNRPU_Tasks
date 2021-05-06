@@ -24,8 +24,14 @@ void initGL() {
 
 void onReshape(int w, int h)
 {
-	// don't allow to resize the window
-	glutReshapeWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
+	WINDOW_WIDTH = w;
+	WINDOW_HEIGHT = h;
+	glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT);
+	tree.update();
+	glutPostRedisplay();
 }
 
 string help = "+	Add element to tree\n-	Remove element from tree\ns	Convert to binary search tree\nb	Convert to balanced tree\nr	Reset tree\nh	Show this message";
@@ -109,11 +115,11 @@ void display()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	tree.draw(); // draw treeeeeeee
-	drawText(WINDOW_WIDTH - 70, WINDOW_HEIGHT - 18, "Laws: " + to_string(tree.getLeafCount()), GLUT_BITMAP_TIMES_ROMAN_24);
+	drawText(WINDOW_WIDTH - 5, WINDOW_HEIGHT - glutBitmapHeight(GLUT_BITMAP_TIMES_ROMAN_24), "Laws: " + to_string(tree.getLeafCount()), GLUT_BITMAP_TIMES_ROMAN_24, GL_TEXT_ALIGN_RIGHT);
 	if (message.length() > 0) {
-		drawText(10, WINDOW_HEIGHT - 18, message, GLUT_BITMAP_TIMES_ROMAN_24, GL_TEXT_ALIGN_LEFT);
+		drawText(5, WINDOW_HEIGHT - glutBitmapHeight(GLUT_BITMAP_TIMES_ROMAN_24), message, GLUT_BITMAP_TIMES_ROMAN_24, GL_TEXT_ALIGN_LEFT);
 	}
-	drawText(10, 10, debugMessage, GLUT_BITMAP_TIMES_ROMAN_24, GL_TEXT_ALIGN_LEFT);
+	drawText(5, 5, debugMessage, GLUT_BITMAP_TIMES_ROMAN_24, GL_TEXT_ALIGN_LEFT);
 	glutSwapBuffers();
 }
 
@@ -133,7 +139,6 @@ int main(int argc, char* argv[]) {
 	initGL();
 	glutReshapeFunc(onReshape);
 	glutDisplayFunc(display);
-	//glutIdleFunc(display); // never do like this
 	glutKeyboardFunc(onKeyboardAction);
 	glutPassiveMotionFunc(onMouseMove);
 	cout << "Note: press buttons in the main window, not console!" << endl;
