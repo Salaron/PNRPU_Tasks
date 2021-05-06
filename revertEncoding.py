@@ -7,6 +7,7 @@ def updateEncoding(srcfile, trgfile):
         # open file and read bytes to check encoding
         with open(srcfile, "rb") as f:
             encoding = chardet.detect(f.read())["encoding"]
+        if encoding == None: return
         if encoding.lower().find("utf-8") == -1:
             return
         # if encoding is not uf8 then convert it
