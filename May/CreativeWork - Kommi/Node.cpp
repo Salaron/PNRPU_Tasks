@@ -1,4 +1,5 @@
 #include "Node.h"
+#include "GL/freeglut.h"
 
 using namespace std;
 
@@ -13,4 +14,13 @@ KNode::KNode(KNode* parent, vector<vector<int>> matrix, int min): KNode(matrix, 
 
 KNode::~KNode() {
 
+}
+
+void KNode::draw() {
+	glBegin(GL_POLYGON);
+	glVertex2i(x, y);
+	glVertex2i(x + 50, y);
+	glVertex2i(x + 50, y - 50);
+	glVertex2i(x, y - 50);
+	glEnd();
 }

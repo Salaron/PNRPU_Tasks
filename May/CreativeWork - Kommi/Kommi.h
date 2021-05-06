@@ -1,18 +1,10 @@
 #pragma once
 #include <vector>
 #include <string>
-#include <iostream>
+#include "Edge.h"
+#include "Tree.h"
 
-class Edge {
-public:
-	int from;
-	int to;
-
-	friend std::ostream& operator <<(std::ostream& out, Edge& edge) {
-		out << edge.from + 1 << " -> " << edge.to + 1;
-		return out;
-	}
-};
+class KTree;
 
 class Kommi {
 	int m_count;
@@ -27,19 +19,16 @@ public:
 	void PrintMatrix();
 	void PrintMatrix(std::vector<std::vector<int>>& matrix);
 
-
-	// easy method: find all Edges
-	// don't check cost
-	std::vector<Edge> SolveEasy();
-	std::vector<Edge> SolveHard();
+	KTree* Solve(bool stupidSolution);
+	std::string getSolutionPath(KTree* tree);
 
 	bool CheckMatrix(std::vector<std::vector<int>> matrix);
-
-
 	int findMin(std::vector<std::vector<int>>& matrix, int x, int y, bool isRow);
 	int Reduct(std::vector<std::vector<int>>& matrix, bool isRow);
 	Edge FindEdge(std::vector<std::vector<int>>& matrix);
 
 	int Exclude(std::vector<std::vector<int>>& matrix, Edge edge);
 	int Include(std::vector<std::vector<int>>& matrix, Edge edge);
+
+	friend class Graph;
 };

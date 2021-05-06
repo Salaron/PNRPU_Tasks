@@ -2,14 +2,30 @@
 #include "../Lab20 - Binary Tree/Tree.h"
 #include "Node.h"
 #include <vector>
+#include "Edge.h"
 
-class tree : public Tree<int> {
+class KNode;
+
+class KTree : public Tree<int> {
 public:
-	tree();
+	KTree();
 	KNode* root = nullptr;
 
-	KNode* insert(KNode* node, std::vector<std::vector<int>> matrix, int value);
+	int wayLen = 0;
+	std::vector<Edge> solution;
+
+	bool isInSolution(int i, int j);
+
+	int getHeight();
+	int getHeight(KNode* node);
+
+	void draw();
+	void draw(KNode* node);
+	KNode*& insert(KNode* node, std::vector<std::vector<int>> matrix, int value);
 
 	KNode* getMin();
 	KNode* getMin(KNode* node);
+
+	void update();
+	void update(KNode* node, int col);
 };

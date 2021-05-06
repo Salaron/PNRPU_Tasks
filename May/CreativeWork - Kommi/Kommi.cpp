@@ -113,7 +113,6 @@ int Kommi::findMin(vector<vector<int>>& matrix, int x, int y, bool isRow = false
 }
 
 Edge Kommi::FindEdge(vector<vector<int>>& matrix) {
-
 	int max = -1;
 	Edge edge{ 0, 0 };
 
@@ -167,46 +166,44 @@ bool Kommi::CheckMatrix(vector<vector<int>> matrix) {
 	return count == 0;
 }
 
-vector<Edge> Kommi::SolveHard() {
+KTree* Kommi::Solve(bool stupidSolution = false) {
 	vector<vector<int>> tmpMatrix = m_matrix;
 	vector<Edge> result;
-	tree tr; // дерево решений
+	KTree* tree = new KTree; // дерево решений
 
 	// прелюдия
 	int q1 = Reduct(tmpMatrix, true);
 	int q2 = Reduct(tmpMatrix);
-	KNode* parent = tr.insert(nullptr, tmpMatrix, q1 + q2);
-
+	KNode* parent = tree->insert(nullptr, tmpMatrix, q1 + q2);
+	int wayLen = 0;
 	while (!CheckMatrix(tmpMatrix)) {
 		tmpMatrix = parent->m_matrix;
-		int edgeW = parent->value;
+		wayLen = parent->value;
 		int q1 = Reduct(tmpMatrix, true);
 		int q2 = Reduct(tmpMatrix);
-		edgeW += q1 + q2;
+		wayLen += q1 + q2;
 
-		// find edge
 		Edge edge = FindEdge(tmpMatrix);
 
-		// разбитие на два подмножества: включающее найденное ребро и не включающее его
+		// разбиение на два подмножества: включающее найденное ребро и не включающее его
 		vector<vector<int>> tmp1 = tmpMatrix;
-		int way1 = Include(tmp1, edge) + edgeW;
+		int way1 = Include(tmp1, edge) + wayLen;
 		vector<vector<int>> tmp2 = tmpMatrix;
-		int way2 = Exclude(tmp2, edge) + edgeW;
+		int way2 = Exclude(tmp2, edge) + wayLen;
 
-		KNode* node1 = tr.insert(parent, tmp1, way1);
+		KNode* node1 = tree->insert(parent, tmp1, way1);
 		node1->edge = edge;
-		KNode* node2 = tr.insert(parent, tmp2, way2);
+		KNode* node2 = tree->insert(parent, tmp2, way2);
 		node2->excluded = true;
 		node2->edge = edge;
 
-		// get minimal element
-		KNode* minimalWay = tr.getMin();
-		if (minimalWay->value < way1 && minimalWay->value < way2) {
+		KNode* minimalWay = tree->getMin();
+		if (minimalWay->value < way1 && minimalWay->value < way2 && !stupidSolution) {
 			parent = minimalWay;
 			result = {};
 			KNode* t = parent;
 			while (t != nullptr) {
-				if (t->excluded != true && t != tr.root) {
+				if (t->excluded != true && t != tree->root) {
 					result.push_back(t->edge);
 				}
 				t = t->parent;
@@ -223,33 +220,29 @@ vector<Edge> Kommi::SolveHard() {
 			}
 		}
 	}
-
 	printVector<Edge>(result);
-	return result;
+	tree->solution = result;
+	tree->wayLen = wayLen;
+	return tree;
 }
 
-vector<Edge> Kommi::SolveEasy() {
-	vector<vector<int>> tmpMatrix = m_matrix;
-	vector<Edge> result;
-	while (!CheckMatrix(tmpMatrix)) {
-		int edgeW = Reduct(tmpMatrix, true);
-		edgeW += Reduct(tmpMatrix);
+string Kommi::getSolutionPath(KTree* tree) {
+	string result = "";
 
-		Edge edge = FindEdge(tmpMatrix);
-
-		vector<vector<int>> tmp1 = tmpMatrix;
-		int s1 = Include(tmp1, edge);
-		vector<vector<int>> tmp2 = tmpMatrix;
-		int s2 = Exclude(tmp2, edge);
-		if (edgeW + s1 <= edgeW + s2) {
-			tmpMatrix = tmp1;
-			result.push_back(edge);
-		}
-		else {
-			tmpMatrix = tmp2;
+	Edge current = tree->solution[0];
+	result += m_names[current.from] + "->" + m_names[current.to];
+	int count = 0;
+	while (count < m_count) {
+		for (int i = 0; i < tree->solution.size(); i++) {
+			Edge next = tree->solution[i];
+			if (current.to == next.from) {
+				count++;
+				result += "->" + m_names[next.to];
+				current = next;
+				break;
+			}
 		}
 	}
-	printVector<Edge>(result);
 
-	return result;
+	return result.substr(0, result.length() - 3); // cut out part of begging
 }
