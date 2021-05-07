@@ -22,6 +22,8 @@ public:
 
 	void draw();
 	bool isHovered(int x, int y);
+protected:
+	void drawTriangle(Node<T>* child);
 };
 
 #include "Node.cpp"

@@ -16,6 +16,7 @@ Tree<int> tree;
 void initGL() {
 	glLoadIdentity();
 	glShadeModel(GL_SMOOTH);
+	glEnable(GL_LINE_SMOOTH);
 	glClearColor(bgColor.red, bgColor.green, bgColor.blue, 1);
 	glMatrixMode(GL_PROJECTION);
 	glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);

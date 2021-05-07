@@ -23,6 +23,7 @@ static Color defTextColor{ 0, 0, 0 }; // black
 
 inline void drawText(double x, double y, std::string text, void* font = GLUT_BITMAP_TIMES_ROMAN_24, int align = GL_TEXT_ALIGN_CENTER, Color textColor = defTextColor) {
 	glColor3f(textColor.red, textColor.green, textColor.blue);
+	glEnable(GL_LINE_SMOOTH);
 
 	auto strings = std::vector<std::string>{};
 	auto ss = std::stringstream{ text };
@@ -62,6 +63,7 @@ inline void drawText(double x, double y, std::string text, void* font = GLUT_BIT
 		}
 		count++;
 	}
+	glDisable(GL_LINE_SMOOTH);
 }
 
 inline void drawCircle(double x, double y, int radius, Color main, Color stroke) {
