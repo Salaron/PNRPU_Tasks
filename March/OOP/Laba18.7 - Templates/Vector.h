@@ -17,6 +17,8 @@ public:
 	Vector operator * (int k);
 	int operator () ();
 
+	void push(T val);
+
 	friend ostream& operator << (ostream& out,  Vector<T>& a) {
 		for (int i = 0; i < a(); ++i)
 			out << a.m_container[i] << " ";

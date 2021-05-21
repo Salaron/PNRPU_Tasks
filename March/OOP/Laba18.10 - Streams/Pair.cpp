@@ -33,15 +33,20 @@ Pair Pair::sum(Pair b) {
 	return result;
 }
 
+bool Pair::operator != (Pair other)
+{
+	return m_first != other.m_first && m_second != other.m_second;
+}
+
 istream& operator>>(istream& in, Pair& p)
 {
-	cout << "Введите первое число: "; cin >> p.m_first;
-	cout << "Введите второе число: "; cin >> p.m_second;
+	in >> p.m_first >> p.m_second;
 	return in;
 }
 
 ostream& operator<<(ostream& out, Pair& p)
 {
-	cout << "(" << p.getFirst() << "; " << p.getSecond() << ")" << endl;
+	out << p.getFirst() << " " << p.getSecond() << endl;
 	return out;
 }
+

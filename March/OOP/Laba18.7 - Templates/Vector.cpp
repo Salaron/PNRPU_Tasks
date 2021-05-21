@@ -29,6 +29,18 @@ Vector<T>::~Vector() {
 }
 
 template <class T>
+void Vector<T>::push(T val) {
+	T* a = new T[m_size + 1];
+	for (int i = 0; i < m_size; i++) {
+		a[i] = m_container[i];
+	}
+	delete m_container;
+	m_container = a;
+	m_size++;
+	m_container[m_size - 1] = val;
+}
+
+template <class T>
 Vector<T>& Vector<T>::operator = (const Vector<T>& a) {
 	if (this == &a) return *this;
 	m_size = a.m_size;

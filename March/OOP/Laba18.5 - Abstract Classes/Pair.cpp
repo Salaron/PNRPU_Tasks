@@ -40,8 +40,28 @@ istream& operator>>(istream& in, Pair& p)
 	return in;
 }
 
+void Pair::Show() {
+	cout << "(" << getFirst() << "; " << getSecond() << ")" << endl;
+}
+
 ostream& operator<<(ostream& out, Pair& p)
 {
 	cout << "(" << p.getFirst() << "; " << p.getSecond() << ")" << endl;
 	return out;
+}
+
+Pair Pair::operator +(const Pair& t)
+{
+	Pair r;
+	r.m_first = m_first + t.m_first;
+	r.m_second = m_second + t.m_second;
+	return r;
+}
+
+Pair Pair::operator -(const Pair& t)
+{
+	Pair r;
+	r.m_first = m_first - t.m_first;
+	r.m_second = m_second - t.m_second;
+	return r;
 }
