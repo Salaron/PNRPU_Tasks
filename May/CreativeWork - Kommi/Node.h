@@ -18,7 +18,9 @@ public:
 	KNode* right = nullptr;
 
 	bool excluded = false;
+	bool solvable = true;
 
+	std::vector<Edge> solution;
 	Edge edge;
 
 	std::vector<std::vector<int>> m_matrix;

@@ -13,7 +13,9 @@ public:
 
 	int wayLen = 0;
 	std::vector<Edge> solution;
+	bool haveSolution = true;
 
+	bool checkSolution();
 	bool isInSolution(int i, int j);
 
 	int getHeight();

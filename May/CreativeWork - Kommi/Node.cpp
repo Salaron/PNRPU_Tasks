@@ -17,10 +17,11 @@ KNode::~KNode() {
 }
 
 void KNode::draw() {
-	glBegin(GL_POLYGON);
+	glColor3f(0, 1, 1);
+	glBegin(GL_LINE_LOOP);
 	glVertex2i(x, y);
 	glVertex2i(x + 50, y);
-	glVertex2i(x + 50, y - 50);
-	glVertex2i(x, y - 50);
+	glVertex2i(x + 50, y - 30);
+	glVertex2i(x, y - 30);
 	glEnd();
 }

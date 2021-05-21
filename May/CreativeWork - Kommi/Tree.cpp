@@ -15,10 +15,18 @@ KNode*& KTree::insert(KNode* node, vector<vector<int>> matrix, int value) {
 			node->right->parent = node;
 			return node->right;
 		}
-		else {
+		else if (node->left == nullptr) {
 			node->left = new KNode(node, matrix, value);
 			node->left->parent = node;
 			return node->left;
+		}
+		else if (node->right == nullptr) {
+			node->right = new KNode(node, matrix, value);
+			node->right->parent = node;
+			return node->right;
+		}
+		else {
+			cout << "critical error" << endl;
 		}
 	}
 	update();
@@ -30,6 +38,7 @@ KNode* KTree::getMin() {
 
 KNode* KTree::getMin(KNode* node) {
 	if (node == nullptr) return nullptr;
+	if (node->solvable == false) return nullptr;
 
 	if (node->left != nullptr && node->right != nullptr) {
 		KNode* r1 = getMin(node->left);
@@ -85,20 +94,16 @@ void KTree::update(KNode* node, int col) {
 	if (node == nullptr) return;
 	if (node->parent == nullptr) {
 		node->level = 1;
-		int absCol = col - pow(2, node->level - 1) + 1;
-		double ww = ((WINDOW_WIDTH) / pow(2, node->level - 1));
-
-		node->x = ww * (absCol - 1) + ww / 2;
-		node->y = WINDOW_HEIGHT - (node->level * levelHeight - levelHeight / 2);
 	}
 	else {
 		node->level = node->parent->level + 1;
-		node->y = node->parent->y - 70;
-		node->x = col % 2 == 0 ? node->parent->x - 40 : node->parent->x + 40;
 	}
 
-	update(node->left, col << 1);
-	update(node->right, (col << 1) | 1);
+	node->x = col * WINDOW_WIDTH / (pow(2, node->level));
+	node->y = node->level * WINDOW_WIDTH / getHeight();
+
+	update(node->left, col * 2 - 1);
+	update(node->right, col * 2);
 }
 
 void KTree::draw(KNode* node) {
@@ -109,6 +114,7 @@ void KTree::draw(KNode* node) {
 }
 
 bool KTree::isInSolution(int i, int j) {
+	if (!haveSolution) return false;
 	for (auto const edge : solution) {
 		if (edge.from == i && edge.to == j) return true;
 	}
