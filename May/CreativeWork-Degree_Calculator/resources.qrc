@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/backspace.svg</file>
+        <file>assets/icon.png</file>
+        <file>assets/external.png</file>
+        <file>assets/close.svg</file>
+        <file>assets/internal.png</file>
+        <file>assets/keyPress.mp3</file>
+        <file>assets/keyPress.wav</file>
+        <file>assets/history.svg</file>
+    </qresource>
+</RCC>
