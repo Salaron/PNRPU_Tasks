@@ -55,12 +55,14 @@ void Kommi::addNode() {
 
 	for (int i = 0; i < m_count - 1; i++)
 	{
+		cout << m_names[i] << " => " << tmp << endl;
 		int tmp;
 		cin >> tmp;
 		m_matrix[i].push_back(tmp);
 	}
 
 	for (int i = 0; i < m_count - 1; i++) {
+		cout << tmp << " => " << m_names[i] << endl;
 		int tmp;
 		cin >> tmp;
 		t.push_back(tmp);
@@ -113,7 +115,7 @@ void Kommi::addLine() {
 	int ind2 = distance(m_names.begin(), itTo);
 
 	int dist;
-	cout << "Distance"; cin >> dist;
+	cout << "Distance: "; cin >> dist;
 	m_matrix[ind][ind2] = dist;
 	recompute = true;
 }
@@ -291,7 +293,6 @@ bool Kommi::findLoop(vector<vector<int>>& matrix, vector<Edge>& path) {
 				}
 				matrix[rowCopy][col] = -1;
 				matrix[col][rowCopy] = -1;
-				cout << "[" << rowCopy << "; " << col << "]" << endl;
 				return findLoop(matrix, path);
 			}
 		}

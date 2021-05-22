@@ -58,6 +58,7 @@ protected:
 private:
     void addToHistory(QString result);
     GradNumber* leftOperand = nullptr;
+    GradNumber* rightOperand = nullptr;
     QString operation = "";
     QString operation_ = "";
     CALC_MODE mode = MODE_GRAD;

@@ -128,11 +128,10 @@ CalculatorWindow::~CalculatorWindow()
 }
 
 void CalculatorWindow::toNumberClicked() {
+    CE();
     if (mode == MODE_NUMBER) {
-        ui->buttonChangeMode->setText("DEG");
         switchMode(MODE_GRAD);
     } else {
-        ui->buttonChangeMode->setText("RAD");
         switchMode(MODE_NUMBER);
     }
 }
@@ -164,7 +163,7 @@ void CalculatorWindow::trigonometryClicked() {
             result = atan(1 / value);
         }
     } else {
-        // нормальные
+        // обычные
         if (text.indexOf("sin") != -1) {
             result = sin(value);
         } else if (text.indexOf("cos") != -1) {
@@ -176,7 +175,8 @@ void CalculatorWindow::trigonometryClicked() {
         }
     }
     this->isAfterEq = true;
-    mode = MODE_NUMBER;
+    switchMode(MODE_NUMBER);
+    addToHistory(ui->label->text() + "\n" + QString::number(result));
     ui->lineEdit->setText(QString::number(result));
 }
 
@@ -287,38 +287,30 @@ void CalculatorWindow::operatorClicked() {
 void CalculatorWindow::equalClicked() {
     try {
         if (this->leftOperand != nullptr) {
-            GradNumber* right = new GradNumber(ui->lineEdit->text(), this->mode);
-            if (isAfterEq) {
-                // retry: switch operands
-                GradNumber* tmp = leftOperand;
-                leftOperand = right;
-                right = tmp;
+            if (!isAfterEq || rightOperand == nullptr) {
+                rightOperand = new GradNumber(ui->lineEdit->text(), this->mode);
+            } else {
+                delete leftOperand;
+                leftOperand = new GradNumber(ui->lineEdit->text(), this->mode);
             }
 
             GradNumber result;
             if (this->operation == "+") {
-                result = *this->leftOperand + *right;
+                result = *this->leftOperand + *rightOperand;
             } else if (this->operation == "-") {
-                result = *this->leftOperand - *right;
+                result = *this->leftOperand - *rightOperand;
             } else if (this->operation == "*") {
-                result = *this->leftOperand * *right;
+                result = *this->leftOperand * *rightOperand;
             } else if (this->operation == "/") {
-                result = *this->leftOperand / *right;
-            }
-            if (isAfterEq) {
-                // retry: switch operands
-                GradNumber* tmp = leftOperand;
-                leftOperand = right;
-                right = tmp;
+                result = *this->leftOperand / *rightOperand;
             }
             this->isAfterEq = true;
             switchMode(result.getMode());
             ui->buttonChangeMode->setDisabled(false);
-            ui->label->setText(this->leftOperand->to_str() + " " + this->operation_ + " " + right->to_str() + " =");
+            ui->label->setText(this->leftOperand->to_str() + " " + this->operation_ + " " + rightOperand->to_str() + " =");
             if (result.error == false)
-                addToHistory(leftOperand->to_str() + " " + operation_ + " " + right->to_str() + " =\n" + result.to_str());
+                addToHistory(leftOperand->to_str() + " " + operation_ + " " + rightOperand->to_str() + " =\n" + result.to_str());
             ui->lineEdit->setText(result.to_str());
-            delete right;
         }
     } catch (QString err) {
         qDebug() << err;
@@ -327,11 +319,13 @@ void CalculatorWindow::equalClicked() {
 
 void CalculatorWindow::switchMode(CALC_MODE newMode) {
     if (newMode == MODE_NUMBER) {
+        ui->buttonChangeMode->setText("RAD");
         ui->lineEdit->setText("0");
         ui->buttonGrad->setText(".");
         ui->buttonGrad->setDisabled(false);
     }
     if (newMode == MODE_GRAD) {
+        ui->buttonChangeMode->setText("DEG");
         if (mode == MODE_NUMBER) {
             ui->lineEdit->setText("0°");
         }

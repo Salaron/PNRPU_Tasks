@@ -7,8 +7,8 @@
 
 using namespace std;
 
-extern int WINDOW_WIDTH = 960;
-extern int WINDOW_HEIGHT = 640;
+extern int WINDOW_WIDTH = 1138;
+extern int WINDOW_HEIGHT = 720;
 
 Kommi* kommi = Kommi::instance();
 Graph graph;

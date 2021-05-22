@@ -212,7 +212,6 @@ public:
         GradNumber copy;
         double left;
         double right;
-        bool isNumber = mode == MODE_NUMBER && other.mode == MODE_NUMBER;
         if (mode == MODE_NUMBER) {
             left = getInNumber();
         } else {
