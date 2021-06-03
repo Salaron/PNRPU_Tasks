@@ -230,7 +230,7 @@ Edge Kommi::FindEdge(vector<vector<int>>& matrix) {
 int Kommi::Exclude(vector<vector<int>>& matrix, Edge edge, vector<Edge>& zeros) {
 	// исключение ребра производится исключением данного элемента
 	matrix[edge.from][edge.to] = -1;
-	findLoop(matrix, zeros);
+	//saafindLoop(matrix, zeros);
 	int q1 = Reduct(matrix, true);
 	int q2 = Reduct(matrix);
 
@@ -248,7 +248,7 @@ int Kommi::Include(vector<vector<int>>& matrix, Edge edge, vector<Edge>& zeros) 
 		matrix[edge.from][i] = -1;
 		matrix[i][edge.to] = -1;
 	}
-	findLoop(matrix, zeros);
+	//findLoop(matrix, zeros);
 	// приводим матрицу и вычисляем сумму констант приведения
 	int q1 = Reduct(matrix, true);
 	int q2 = Reduct(matrix);
@@ -314,7 +314,7 @@ KTree* Kommi::Solve(bool onlyInclude = false) {
 		int q1 = Reduct(parent->m_matrix, true);
 		int q2 = Reduct(parent->m_matrix);
 		wayLen += q1 + q2;
-
+		PrintMatrix(parent->m_matrix);
 		Edge edge = FindEdge(parent->m_matrix);
 
 		// разбиение на два подмножества: включающее найденное ребро и не включающее его

@@ -16,6 +16,6 @@ int main() {
 	c = (a++) + b;
 	cout << "a = "<< a << endl;
 	cout << "b = "<< b << endl;
-	cout << "c = "<< c << endl;
+	cout << "(a++) + b = "<< c << endl;
 	return 0;
 }

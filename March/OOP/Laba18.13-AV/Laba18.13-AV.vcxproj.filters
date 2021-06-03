@@ -18,21 +18,12 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Dijkstra.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Graph.cpp">
+    <ClCompile Include="Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Lab20 - Binary Tree\glbag.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Dijkstra.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graph.h">
+    <ClInclude Include="Time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

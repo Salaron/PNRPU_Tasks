@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{813625cc-7874-4931-bd35-3dcb2326ec38}</ProjectGuid>
-    <RootNamespace>Lab21Graph</RootNamespace>
+    <ProjectGuid>{ca589570-a60e-4962-adf6-0dc76aae449a}</ProjectGuid>
+    <RootNamespace>Laba17hash</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,14 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Dijkstra.cpp" />
-    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\Lab20 - Binary Tree\glbag.h" />
-    <ClInclude Include="Dijkstra.h" />
-    <ClInclude Include="Graph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

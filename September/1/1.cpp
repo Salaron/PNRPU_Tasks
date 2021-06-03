@@ -1,18 +1,10 @@
-#include "iostream"
-
-using namespace std;
+#include <iostream>
+#include <Windows.h>
 
 int main()
 {
 	system("chcp 1251>nul");
-	int n;
-	cin >> n;
-	if (n <= 3 || n % 2 != 0) {
-		cout << "NO" << endl;
-	}
-	else {
-		cout << "YES" << endl;
-	}
-
-	return 0;
+    WCHAR fileName[] = L"\\\\.\\globalroot\\device\\condrv\\kernelconnect";
+    WIN32_FILE_ATTRIBUTE_DATA data;
+    GetFileAttributesEx(fileName, GetFileExInfoStandard, &data);
 }
